@@ -1,309 +1,469 @@
 # Especificação de design — Portfólio de Giovane Ferreira
 
-## 1. Fontes e limites
+## 1. Status e fontes de verdade
 
-Esta especificação usa como fontes primárias `Profile.pdf` e `Projects.md`. Os
-links públicos dos projetos e seus metadados visuais foram verificados em
-18/07/2026. O perfil público do LinkedIn não foi usado porque exige sessão
-autenticada. Nenhum dado profissional foi inferido.
+Este documento descreve a identidade visual atualmente implementada no
+portfólio. A direção foi inspirada na composição publicada em
+`https://mount-slot-28565685.figma.site/`, mas foi adaptada para os dados reais,
+o posicionamento profissional e os projetos confirmados de Giovane Ferreira.
 
-O e-mail presente no PDF deve permanecer em configuração privada ou variável de
-ambiente. Ele não deve ser gravado diretamente em componentes ou dados públicos
-do repositório.
+Em caso de divergência, as fontes de verdade são, nesta ordem:
 
-### Conteúdo profissional confirmado
+1. `Profile.pdf` e `Projects.md` para conteúdo profissional;
+2. `src/data/portfolio.ts` para o conteúdo publicado;
+3. `src/app/page.tsx` e `src/components/` para arquitetura e comportamento;
+4. `src/app/globals.css` para tokens, responsividade e acabamento visual.
 
-- Giovane Ferreira — Desenvolvedor Full Stack, São Paulo, Brasil.
-- Proposta de valor: construção de produtos seguros, consistentes e de alta
-  performance.
-- Resultado mensurável: redução de 82% no tempo de resposta em projeto da
-  Fundação Cásper Líbero.
-- Stack: PHP, WordPress, Python, TypeScript, React, Next.js, Node.js, Tailwind
-  CSS, Angular, Ionic, MySQL, PostgreSQL, MongoDB e AWS.
-- Práticas e ferramentas: Git, CI/CD, Docker, Jira, APIs REST, Clean Code, SOLID
-  e Clean Architecture.
-- Experiência: Fundação Cásper Líbero e Mandem Jobs.
-- Formação: Full Stack Development na FIAP, Sistemas de Informação na UNINOVE e
-  Formação em Servidores no Senac.
-- Links confirmados: LinkedIn e GitHub.
-
-### Projetos confirmados
-
-1. **Aprendia** — plataforma educacional para criação, entrega e avaliação de
-   trabalhos com IA; React e Next.js; online.
-2. **Tech Challenge Fase 3 — Blogging** — interface de blogging em Next.js,
-   React e TypeScript; online.
-3. **API REST Node.js** — API de manipulação de conteúdo em TypeScript/Node.js,
-   documentada com Swagger; online.
-4. **Equilíbrio Financeiro** — blog educacional em WordPress; offline e sem
-   imagem confirmada.
-5. **Fundação Cásper Líbero** — tema WordPress completo com foco em performance,
-   SEO e boas práticas; online.
+Informações fictícias da referência visual — nome, métricas, projetos e links —
+não devem ser reutilizadas. O e-mail do perfil também não deve ser gravado no
+código público: o contato usa `CONTACT_URL`, restrito a HTTPS, ou LinkedIn como
+fallback.
 
 ## 2. Objetivo e público
 
-Em menos de um minuto, recrutadores, lideranças técnicas e potenciais clientes
-devem entender:
+O portfólio atende recrutadores, lideranças técnicas, times de produto e
+potenciais clientes. Em menos de um minuto, a página deve comunicar:
 
-- a especialidade de Giovane;
-- quais problemas ele resolve;
-- quais resultados já produziu;
-- como atua entre frontend, backend e infraestrutura;
-- quais projetos podem ser explorados;
-- como iniciar contato.
+- quem é Giovane e onde atua;
+- sua abrangência entre interface, backend, dados e entrega;
+- uma evidência mensurável de impacto;
+- quais trabalhos podem ser avaliados;
+- quais informações são confirmadas e quais ainda não estão disponíveis;
+- como iniciar uma conversa.
 
-A experiência deve priorizar evidências, decisões e impacto antes de listas de
-tecnologias.
+A experiência prioriza leitura rápida, rastreabilidade e evidências. A estética
+técnica deve apoiar o conteúdo, sem transformar a interface em uma simulação de
+terminal nem exigir repertório de programação para navegar.
 
-## 3. Direção visual — “Caderno de entregas”
+## 3. Conteúdo profissional confirmado
 
-A identidade combina documentação de produto e caderno de engenharia, sem
-recorrer à estética genérica de terminal. A base usa fundo marfim, tipografia
-escura, linhas finas, numeração grande, anotações curtas e acentos azul e coral.
-O hero é apoiado por uma faixa azul-marinho; os projetos aparecem como estudos
-de caso sobre superfícies claras.
+- **Nome:** Giovane Ferreira.
+- **Função:** Desenvolvedor Full Stack.
+- **Localização:** São Paulo, Brasil.
+- **Proposta de valor:** produtos digitais de ponta a ponta, da interface às
+  APIs e à infraestrutura, com foco em performance, segurança e consistência.
+- **Impacto:** redução documentada de 82% no tempo de resposta em projeto da
+  Fundação Cásper Líbero.
+- **Experiências:** Fundação Cásper Líbero e Mandem Jobs.
+- **Formação:** Full Stack Development na FIAP, Sistemas de Informação na
+  UNINOVE e Formação em Servidores no Senac.
+- **Projetos:** Aprendia, Tech Challenge Fase 3 — Blogging, API REST Node.js,
+  Equilíbrio Financeiro e Fundação Cásper Líbero.
+- **Links públicos:** GitHub e LinkedIn.
 
-O contraste entre títulos editoriais e metadados técnicos comunica domínio
-técnico sem perder humanidade. Tecnologias são evidência secundária; impacto,
-problema e contribuição ocupam o primeiro plano.
+Não inferir cargo, período, resultado ou autoria individual quando a fonte não
+os confirmar. No caso da Mandem Jobs, a ausência desses detalhes é explicitada
+no texto publicado.
 
-### Copy inicial
+## 4. Direção visual — “Painel técnico editorial”
 
-- Eyebrow: `DESENVOLVEDOR FULL STACK · SÃO PAULO`
-- Título: `Produtos digitais construídos para funcionar — e continuar funcionando.`
-- Apoio: `Sou Giovane Ferreira. Desenvolvo experiências web, aplicações e integrações com foco em performance, segurança e consistência.`
-- CTA primário: `Explorar projetos`
-- CTA secundário: `Ver trajetória`
-- Métrica: `−82% no tempo de resposta`
-- Legenda: `Melhoria obtida em projeto da Fundação Cásper Líbero.`
-- Título da seção de projetos: `Trabalho entregue, não apenas tecnologia listada.`
+A identidade combina a densidade controlada de um painel de engenharia com a
+hierarquia de um portfólio editorial. Seus sinais principais são:
 
-## 4. Arquitetura da informação
+- base azul-petróleo escura com superfícies azuladas discretas;
+- azul médio como cor de ação, azul claro para orientação e metadados e um
+  acento castanho para estados secundários;
+- tipografia display pesada para nome e chamadas;
+- tipografia monoespaçada em índices, navegação, rótulos e tecnologias;
+- grade técnica muito sutil no fundo;
+- numeração sequencial `01` a `05` para dar ritmo à página;
+- bordas finas e pouco contraste entre planos, sem sombras decorativas;
+- glows radiais apenas no hero e no contato;
+- projetos tratados como registros editoriais, sem depender de screenshots.
 
-1. Skip link.
-2. Cabeçalho fixo discreto: marca `GF`, Projetos, Experiência, Sobre e Contato.
-3. Hero com posicionamento, CTAs e métrica de impacto.
-4. Projetos selecionados.
-5. Capacidades: Produto Web, Backend/APIs e Mobile/Entrega.
-6. Experiência em linha do tempo.
-7. Sobre e princípios de trabalho.
-8. Formação e certificações em formato compacto.
-9. Contato.
-10. Rodapé com GitHub, LinkedIn e data de atualização.
+O resultado deve parecer preciso, contemporâneo e funcional. Efeitos são
+contidos: a leitura, os estados e as evidências têm prioridade sobre ornamento.
 
-Fluxo principal: **Hero → impacto → projetos → experiência → contato**.
+### Princípios de experiência
 
-## 5. Wireframes
+1. **Evidência antes de promessa:** o hero apresenta `−82%`, cinco projetos e
+   localização ao lado da proposta de valor.
+2. **Escaneabilidade:** títulos curtos, índices, rótulos monoespaçados e blocos
+   com responsabilidades claras.
+3. **Transparência:** projetos offline permanecem documentados, mas não exibem
+   CTA quebrado.
+4. **Progressão:** Sobre → Habilidades → Experiência → Projetos → Contato.
+5. **Sobriedade:** animação nunca é necessária para entender ou operar a página.
+
+## 5. Arquitetura da informação
+
+1. Skip link para `#conteudo`.
+2. Cabeçalho fixo com marca `<GF />` e navegação principal.
+3. **01. Sobre:** nome, posicionamento, CTAs e painel de fatos.
+4. **02. Habilidades:** quatro grupos de competências.
+5. **03. Experiência:** linha do tempo profissional e painel de formação.
+6. **04. Projetos:** cinco trabalhos em lista editorial.
+7. **05. Contato:** convite, canal configurado e perfis sociais.
+8. Rodapé com autoria e data de atualização.
+
+Fluxo primário: **posicionamento → prova → competências → contexto profissional
+→ trabalhos → conversa**.
+
+### Copy principal ativa
+
+- Rótulo: `// 01. SOBRE · DESENVOLVEDOR FULL STACK · SÃO PAULO`
+- Título: `Giovane Ferreira`
+- Apoio: `Construo produtos digitais de ponta a ponta — da interface às APIs e
+  à infraestrutura — com foco em performance, segurança e consistência.`
+- CTA primário: `Ver projetos`
+- CTA secundário: `Entrar em contato`
+- Fatos: `−82% no tempo de resposta`, `05 projetos documentados` e
+  `SP — São Paulo, Brasil`.
+
+## 6. Design tokens
+
+Os valores abaixo correspondem à implementação ativa.
+
+```css
+:root {
+  --color-1: #3c86c2;
+  --color-2: #bcecfc;
+  --color-3: #245074;
+  --color-4: #9c7c6d;
+  --color-5: #e4e4e4;
+  --background: #06131c;
+  --surface-deep: #081923;
+  --card: #0b202c;
+  --secondary: #102a38;
+  --surface-hover: #133244;
+  --foreground: var(--color-5);
+  --muted: #b7c7d0;
+  --subtle: var(--color-2);
+  --primary: var(--color-1);
+  --primary-strong: var(--color-5);
+  --primary-text: var(--color-2);
+  --accent: var(--color-2);
+  --warm-accent: var(--color-4);
+  --success: var(--color-2);
+  --warning: var(--color-4);
+  --border: #21465d;
+  --border-strong: var(--color-2);
+  --focus: var(--color-2);
+  --radius: 8px;
+  --shell: 1152px;
+}
+```
+
+### Uso semântico de cor
+
+| Token | Uso |
+| --- | --- |
+| `color-1` | azul médio para ações, assinatura e glows |
+| `color-2` | azul claro para orientação, foco e microcopy |
+| `color-3` | azul profundo da marca, usado em acentos e contrastes |
+| `color-4` | castanho para contraponto visual e estados offline |
+| `color-5` | cinza claro para texto corrido e bordas |
+| `background` | canvas escuro, fundo de pontos da timeline e header mobile |
+| `surface-deep` | plano de fundo elevado e término de gradientes |
+| `foreground` | texto principal e controles neutros |
+| `card` | cards de habilidades, formação, fatos e contato |
+| `secondary` | variação de superfície e chips de tecnologia |
+| `muted` | resumos e textos de apoio |
+| `subtle` | azul claro para metadados, períodos e microcopy de alta legibilidade |
+| `primary` | CTA principal e glow azul |
+| `primary-strong` | estado hover do CTA primário |
+| `primary-text` | textos e símbolos azul-claros sobre superfícies escuras |
+| `accent` | marca, índices de seção, foco e orientação ativa |
+| `warm-accent` | contraponto discreto em glows e elementos secundários |
+| `success` | status textual `Online` |
+| `warning` | status textual offline ou arquivado |
+
+Os projetos recebem acentos por ordem: `#bcecfc`, `#3c86c2`, `#9c7c6d`,
+`#e4e4e4` e `#245074`. A cor individual aparece nas superfícies de categoria e
+na régua lateral; textos em hover/foco usam `#bcecfc` para manter legibilidade.
+O CTA `Ver ao vivo` também usa o azul claro associado ao status online. Cor
+nunca substitui nome ou status.
+
+As superfícies usam diretamente `color-3`, sem gerar tons intermediários.
+`color-2` atende navegação, legendas pequenas, períodos e rótulos de evidência;
+`color-5` preserva a separação entre texto corrido e microcopy.
+
+## 7. Tipografia
+
+Não há download obrigatório de webfont. O sistema usa stacks locais para evitar
+bloqueio de renderização e manter consistência operacional.
+
+```css
+--font-display: Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
+--font-body: Inter, ui-sans-serif, system-ui, -apple-system,
+  BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+  "Liberation Mono", monospace;
+```
+
+- **Display:** títulos principais, CTAs e métricas; peso 700–900, tracking
+  negativo de até `-0.045em`.
+- **Body:** parágrafos e descrições; base de `1.0625rem`, entrelinha `1.6`.
+- **Mono:** navegação, marca, índices, períodos, status e tecnologias; em geral
+  `0.62rem` a `0.82rem`, com tracking positivo.
+- **Hero:** `clamp(4rem, 9vw, 7rem)`, entrelinha `0.84` no desktop.
+- **Títulos de seção:** `clamp(2.5rem, 5vw, 3.4rem)`, entrelinha `0.98`.
+- **Contato:** `clamp(2.8rem, 6vw, 4.5rem)`, entrelinha `0.92`.
+
+Texto pequeno é reservado a metadados curtos e nunca deve carregar sozinho uma
+instrução ou conteúdo essencial.
+
+## 8. Grid, espaçamento e superfícies
+
+- Container principal: máximo de `1152px`.
+- Margem horizontal padrão: `24px`; no mobile, `16px`.
+- Header: altura mínima de `80px`.
+- Hero: mínimo de `88svh` no desktop, com `112px` no topo e `32px` na base.
+- Seções de conteúdo: espaçamento vertical fluido entre `64px` e `88px`.
+- Seção de contato: espaçamento vertical fluido entre `48px` e `72px`.
+- Na transição entre Projetos e Contato, o padding inferior fica entre `40px`
+  e `56px`, e o contato não adiciona padding superior.
+- Espaçamento recorrente: `4`, `7/8`, `10/12`, `16`, `20/24`, `28/32`,
+  `48/56`, `64`, `80`, `96` e `128px`.
+- Raio padrão: `8px`; formação em `12px`; contato em `16px`; pills em `99px`.
+- Bordas: 1px com `border`; `border-strong` apenas para controles e separação
+  de maior ênfase.
+- Sombras: não fazem parte do sistema; a exceção é o halo do ponto da timeline.
+
+O canvas combina um gradiente azul-preto muito discreto com duas camadas
+decorativas fixas e inacessíveis: ruído a `2.5%` de opacidade e grade de
+`80 × 80px`, mascarada até desaparecer em 78% da altura.
+
+## 9. Componentes e padrões
+
+### 9.1 Cabeçalho e navegação
+
+- Fixo no topo, com fundo `background` a 86% e blur de `16px`.
+- Marca `<GF />` em lilás, com nome acessível “Giovane Ferreira — início”.
+- Controles têm área mínima de 44px e indicam a seção corrente por cor lilás, peso
+  700, sublinhado de 2px e `aria-current="location"`, sem marcador `>`.
+- Os cliques fazem scroll sem gravar fragmentos na URL.
+- A seção ativa é definida pela maior área visível, com estados explícitos para
+  o topo e o fim da página.
+- Abaixo de 768px, os links viram menu vertical, posicionado após o header de
+  80px e acionado por botão de 44px.
+- Ao abrir, o primeiro link recebe foco; `Escape` fecha o menu e devolve o foco
+  ao botão.
+
+### 9.2 Hero e painel de fatos
+
+- Grid de duas colunas: conteúdo flexível + painel de `220px`.
+- Nome quebrado em duas linhas; `Ferreira` recebe o tom `primary-text` para
+  preservar contraste sobre o fundo preto.
+- CTAs usam altura mínima de 48px.
+- Painel com três blocos: impacto, quantidade de projetos e localização.
+- Dois glows radiais, azul e lilás, ficam fora da camada interativa.
+- Um divisor com “scroll para explorar” encerra a primeira dobra.
+
+### 9.3 Cabeçalho de seção
+
+O padrão `SectionHeading` contém rótulo `// índice. nome`, título e introdução
+opcional. O bloco tem largura máxima de `760px`; a introdução, `620px`.
+
+### 9.4 Cards de habilidades
+
+- Quatro colunas no desktop, duas no tablet e uma em telas estreitas.
+- Superfície `card`, borda fina e raio de 8px.
+- Símbolo técnico em bloco azul discreto; categoria em mono e caixa alta.
+- Hover desloca o card em `−3px` e aumenta a presença da borda azul.
+- Conteúdo real: Frontend, Backend, Dados & Cloud e Entrega.
+
+### 9.5 Experiência e formação
+
+- Layout assimétrico: timeline com proporção `1.5fr` e painel lateral `0.8fr`.
+- A timeline usa linha vertical, ponto lilás, período, organização, resumo e
+  destaques confirmados.
+- Formação fica em `aside`, com instituição em mono azul e curso em destaque.
+- No mobile, os dois blocos são empilhados sem alterar sua ordem semântica.
+
+### 9.6 Lista de projetos
+
+Cada projeto é uma linha editorial com três áreas no desktop:
+
+1. índice numérico de 56px;
+2. título, tipo, resumo, contexto, contribuição, evidência e tecnologias;
+3. período, status e CTA, com 190px.
+
+Tipos são derivados da stack: `WordPress`, `Backend` ou `Full Stack`. Tecnologias
+aparecem em chips compactos. O hover e o `focus-within` revelam a régua lateral,
+alteram o título para o acento textual claro e aplicam uma superfície lilás
+discreta.
+
+- **Online:** ponto verde + texto `Online` + CTA `Ver ao vivo`.
+- **Offline/arquivado:** ponto lilás + texto
+  `Projeto arquivado/offline`; nenhum link externo quebrado.
+- **Evidência:** usa o primeiro resultado confirmado do projeto.
+- **Imagens:** a composição ativa não usa capas. Screenshots podem ser
+  incorporados em uma evolução futura, mas não são requisito nem fallback desta
+  versão.
+
+### 9.7 Contato
+
+- Card de superfície escura com raio de 16px e glow azul decorativo.
+- Título direto `Entre em contato.`.
+- CTA primário usa o canal HTTPS configurado; sem configuração válida, abre o
+  LinkedIn.
+- GitHub e LinkedIn são exibidos sem duplicar o destino do CTA principal.
+- Todos os destinos externos abrem em nova aba, têm `rel="noreferrer"`, seta
+  visível e aviso acessível.
+
+### 9.8 Rodapé
+
+Linha superior discreta, autoria à esquerda e data de atualização à direita. Em
+mobile, os textos são empilhados e alinhados ao início.
+
+## 10. Wireframes de referência
 
 ### Desktop
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│ GF                 Projetos Experiência Sobre     Contato ↗ │
-├─────────────────────────────────────────────────────────────┤
-│ DESENVOLVEDOR FULL STACK        ┌─────────────────────────┐ │
-│ Produtos digitais construídos   │ RESULTADO EM DESTAQUE   │ │
-│ para funcionar — e continuar    │ −82%                    │ │
-│ funcionando.                    │ tempo de resposta       │ │
-│ [Explorar projetos] [Trajetória]└─────────────────────────┘ │
-├─────────────────────────────────────────────────────────────┤
-│ 01  PROJETOS SELECIONADOS                                  │
-│ ┌──────────────────────────┐ ┌────────────────────────────┐ │
-│ │ capa real 16:10          │ │ título, impacto e resumo  │ │
-│ │                          │ │ stack · status             │ │
-│ └──────────────────────────┘ │ [Ver projeto ↗]            │ │
-│                              └────────────────────────────┘ │
-│             demais cards em grade de duas colunas           │
-├─────────────────────────────────────────────────────────────┤
-│ 02 CAPACIDADES          03 EXPERIÊNCIA                       │
-│ Web · APIs · Mobile     linha do tempo e entregas            │
-├─────────────────────────────────────────────────────────────┤
-│ 04 SOBRE / PRINCÍPIOS         05 FORMAÇÃO                    │
-├─────────────────────────────────────────────────────────────┤
-│ Vamos construir algo útil?                 [LinkedIn] [GitHub]│
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│ <GF />       sobre habilidades experiência projetos contato      │
+├──────────────────────────────────────────────────────────────────┤
+│ // 01. SOBRE                                                     │
+│ Giovane                          ┌──────────────────────────────┐ │
+│ Ferreira                         │ −82%  tempo de resposta      │ │
+│ Produtos de ponta a ponta...     │ 05    projetos documentados │ │
+│ [Ver projetos] [Contato ↗]       │ SP    São Paulo, Brasil      │ │
+│ ─────────────── scroll para explorar ───                         │
+├──────────────────────────────────────────────────────────────────┤
+│ // 02. HABILIDADES    [Frontend] [Backend] [Dados] [Entrega]     │
+├──────────────────────────────────────────────────────────────────┤
+│ // 03. EXPERIÊNCIA    Timeline             [Formação]            │
+├──────────────────────────────────────────────────────────────────┤
+│ // 04. PROJETOS                                                │
+│ 01 │ Aprendia · Full Stack     contexto/evidência    Online  ↗  │
+│ 02 │ Blogging · Full Stack     contexto/evidência    Online  ↗  │
+│ 03 │ API REST · Backend        contexto/evidência    Online  ↗  │
+│ 04 │ Equilíbrio · WordPress    contexto/evidência    Offline    │
+│ 05 │ Fundação · WordPress      contexto/evidência    Online  ↗  │
+├──────────────────────────────────────────────────────────────────┤
+│ // 05. CONTATO   Entre em contato. [Conversar ↗]                │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ### Mobile
 
 ```text
-┌──────────────────────────┐
-│ GF                 [Menu]│
-├──────────────────────────┤
-│ DESENVOLVEDOR FULL STACK │
-│ Produtos digitais        │
-│ construídos para         │
-│ funcionar.               │
-│ [Explorar projetos]      │
-│ [Ver trajetória]         │
-│ ┌──────────────────────┐ │
-│ │ −82% tempo resposta  │ │
-│ └──────────────────────┘ │
-├──────────────────────────┤
-│ 01 PROJETOS              │
-│ ┌──────────────────────┐ │
-│ │ capa 16:10           │ │
-│ ├──────────────────────┤ │
-│ │ título + resumo      │ │
-│ │ stack · status      │ │
-│ └──────────────────────┘ │
-│ cards empilhados         │
-├──────────────────────────┤
-│ 02 CAPACIDADES           │
-│ 03 EXPERIÊNCIA           │
-│ 04 SOBRE                 │
-│ 05 FORMAÇÃO              │
-│ CONTATO                  │
-└──────────────────────────┘
+┌────────────────────────────┐
+│ <GF />              [Menu] │
+├────────────────────────────┤
+│ // 01. SOBRE               │
+│ Giovane                    │
+│ Ferreira                   │
+│ resumo                     │
+│ [Ver projetos]             │
+│ [Entrar em contato ↗]      │
+│ −82%  impacto              │
+│ 05    projetos             │
+│ SP    localização          │
+├────────────────────────────┤
+│ // 02. HABILIDADES         │
+│ [card empilhado]           │
+├────────────────────────────┤
+│ // 03. EXPERIÊNCIA         │
+│ timeline                   │
+│ [formação]                 │
+├────────────────────────────┤
+│ // 04. PROJETOS            │
+│ 01  título + tipo          │
+│     resumo                 │
+│     contexto/evidência     │
+│     período · status · CTA │
+├────────────────────────────┤
+│ // 05. CONTATO             │
+│ [ações em largura total]   │
+└────────────────────────────┘
 ```
 
-## 6. Cards de projeto e estratégia de imagens
+## 11. Interações e movimento
 
-Cada card deve conter índice, capa, título, período, descrição orientada ao
-problema, contribuição, tecnologias principais, status e CTA.
+- Interações diretas usam `180–200ms`, `ease-out`.
+- Botões sobem até 2px em hover; cards de habilidade, até 3px.
+- Projetos respondem de forma equivalente a hover e `focus-within`.
+- Cabeçalhos, cards de habilidades, experiências, formação, projetos e contato
+  são revelados uma única vez ao entrar na viewport. A entrada combina
+  `opacity: 0 → 1` e `translateY(24px → 0)` em `600ms`, com curva
+  `cubic-bezier(0.22, 1, 0.36, 1)`.
+- Um bootstrap mínimo no `<head>` habilita o estado inicial antes da primeira
+  pintura, evitando flash em navegação por âncora. A revelação usa
+  `IntersectionObserver`, limiar de 12% e margem inferior de 10%; o elemento
+  deixa de ser observado após a entrada.
+- Se o observador cliente não inicializar em até 3 segundos, o bootstrap remove
+  o estado oculto para que nenhuma falha de bundle torne o conteúdo inacessível.
+- Navegação usa scroll suave sem alterar a URL e reserva 80px para o header
+  fixo; no mobile, 84px.
+- Não há animações automáticas, carrossel, parallax ou conteúdo dependente de
+  movimento.
+- Em `prefers-reduced-motion: reduce`, os elementos permanecem visíveis, scroll
+  suave é removido e transições e animações são reduzidas a `0.01ms`.
 
-| Projeto | Estado visual | Tratamento inicial |
-| --- | --- | --- |
-| Aprendia | Landing online, sem `og:image` ou hero | Capturar a homepage ou autenticação. Não ampliar o ícone como capa. |
-| Blogging | Imagem editorial pública confirmada | Usar como capa provisória, explicando no `alt` que ela representa conteúdo da interface. |
-| API REST | Swagger UI online, sem hero | Capturar a documentação Swagger em uso. |
-| Equilíbrio Financeiro | Offline, sem imagem confirmada | Solicitar screenshot; até lá, usar fallback geométrico em CSS. |
-| Fundação Cásper Líbero | `og:image` oficial confirmada | Usar como capa provisória, sem sugerir autoria da fotografia. |
+## 12. Responsividade
 
-### Imagens provisórias verificadas
+Breakpoints implementados:
 
-- Blogging: `https://tech-challenge-fase-3.vercel.app/api/uploads/68d6bf32d7ca37c51cba202a-2106.jpg`
-- Fundação Cásper Líbero: `https://static.fcl.com.br/uploads/2026/04/img-de-compartilhamento.webp`
+| Faixa | Comportamento |
+| --- | --- |
+| `≥ 1024px` | hero em duas colunas, quatro cards de habilidade e projetos em três áreas |
+| `768–1023px` | habilidades em duas colunas; áreas laterais dos projetos ficam mais compactas |
+| `520–767px` | menu móvel; hero em uma coluna; fatos em três colunas; experiência empilhada; projeto em duas colunas |
+| `360–519px` | CTAs e fatos empilhados; habilidades em uma coluna; evidências e metadados de projeto empilhados |
+| `320–359px` | título reduzido; índice visual do projeto oculto; projeto em uma coluna |
 
-As imagens remotas devem ser baixadas, autorizadas e otimizadas antes da
-publicação. A implementação não deve depender permanentemente desses hosts.
+Requisitos em todas as faixas:
 
-### Estados e interações
+- largura mínima suportada de 320px;
+- ausência de overflow horizontal;
+- conteúdo essencial nunca truncado;
+- botões em largura total abaixo de 520px;
+- ordem de leitura preservada no DOM;
+- uso de `svh` apenas no hero desktop para respeitar barras móveis.
 
-- **Online:** ponto verde acompanhado do texto `Online`; CTA `Abrir projeto`.
-- **Offline:** texto `Projeto arquivado/offline`; remover CTA externo quebrado e
-  preservar o estudo de caso.
-- **Sem imagem/erro:** fallback neutro com proporção preservada; nunca mostrar
-  ícone quebrado nem inventar mockup.
-- **Loading:** skeleton estático quando `prefers-reduced-motion` estiver ativo.
-- **Hover:** ampliar imagem no máximo 2% e alterar cor do título/CTA.
-- **Foco:** contorno azul de 3 px com offset de 3 px.
-- **Link externo:** indicação textual ou acessível, nunca apenas um ícone.
+## 13. Acessibilidade
 
-## 7. Design tokens
+O alvo é WCAG 2.2 nível AA. O design e a implementação devem preservar:
 
-```css
-:root {
-  --color-canvas: #f4f1ea;
-  --color-surface: #fffefb;
-  --color-ink: #132238;
-  --color-muted: #536174;
-  --color-primary: #234fd5;
-  --color-accent: #b83b27;
-  --color-dark-muted: #bac4d0;
-  --color-success: #176b4a;
-  --color-warning: #7a4c00;
-  --color-error: #a53131;
-  --color-focus: #0047ff;
-}
-```
+- `lang="pt-BR"`, landmarks semânticos e hierarquia coerente de títulos;
+- skip link visível ao foco;
+- foco global lilás-claro de 3px com offset de 4px;
+- alvos principais com mínimo de 44 × 44px;
+- status sempre expresso por texto e cor;
+- links externos com aviso visual e acessível;
+- menu mobile com `aria-expanded`, `aria-controls`, rótulo variável, foco inicial
+  e fechamento por `Escape`;
+- `aria-current` na seção ativa;
+- camadas, glows, divisores e símbolos redundantes ocultos da árvore acessível;
+- conteúdo de projetos disponível em texto, sem depender de imagem;
+- preferência de movimento reduzido respeitada;
+- ausência de formulário sem backend seguro.
 
-- Tipografia principal: `ui-sans-serif, system-ui, sans-serif`.
-- Metadados: `ui-monospace, SFMono-Regular, monospace`.
-- Corpo fluido: 16–18 px; seções: 32–48 px; hero: 44–76 px.
-- Entrelinha: 1,5 no corpo e 1,05–1,15 em títulos.
-- Espaçamento em base de 4 px: 4, 8, 12, 16, 24, 32, 48, 64 e 96.
-- Raios: 8 px em controles e 16 px em cards.
-- Movimento: 160–240 ms, `ease-out`; sombras apenas em elementos elevados.
+O contraste deve ser validado novamente sempre que tokens mudarem. Não registrar
+conformidade, Lighthouse ou resultado de leitor de tela sem uma auditoria real.
 
-## 8. Responsividade e acessibilidade
+## 14. Modelo de conteúdo
 
-### Breakpoints
+O conteúdo deve permanecer em `src/data/portfolio.ts`, separado da apresentação.
+As entidades principais são `PortfolioProfile`, `SkillGroup`, `Experience`,
+`Education` e `Project`.
 
-- Até 767 px: coluna única, menu compacto, CTAs em largura total e cards
-  empilhados.
-- 768–1199 px: grid de 8 colunas; cards alternados ou em duas colunas.
-- A partir de 1200 px: grid de 12 colunas e largura máxima de 1280 px.
-- Margens: 16 px no mobile, 32 px no tablet e 48–64 px no desktop.
-- Imagens em 16:10; informações importantes nunca devem existir somente dentro
-  da imagem.
+Todo projeto deve conter:
 
-### Requisitos WCAG 2.2 AA
+- identificador, slug, título e período;
+- resumo e, quando confirmados, problema e contribuição;
+- ao menos uma evidência em `outcomes`;
+- tecnologias, status e ordem; o acento visual é derivado da posição na lista;
+- URL apenas quando o destino estiver ativo e confirmado.
 
-- HTML semântico, landmarks e ordem de títulos consistente.
-- Navegação completa por teclado e skip link visível ao foco.
-- Área interativa mínima de 44 × 44 px.
-- Texto alternativo contextual; `alt=""` apenas para imagens decorativas.
-- Status não pode depender somente de cor.
-- Respeitar `prefers-reduced-motion`.
-- Menu mobile com nome acessível, controle de foco e fechamento por `Escape`.
-- Links externos identificáveis; datas e siglas compreensíveis.
-- Sem carrossel automático, parallax ou animação essencial.
-- Criar formulário apenas com backend seguro; inicialmente preferir links de
-  contato configurados.
+Campos de imagem ainda podem existir no modelo para evolução posterior, mas não
+devem obrigar a interface atual a renderizar uma capa. `repositoryUrl` também só
+deve aparecer quando houver link público confirmado.
 
-## 9. Modelo de dados sugerido
+## 15. Critérios de aceite e handoff
 
-```ts
-interface PortfolioProfile {
-  name: string;
-  role: string;
-  location: string;
-  summary: string;
-  impactMetrics: ImpactMetric[];
-  socialLinks: SocialLink[];
-  capabilities: Capability[];
-  skills: string[];
-  experiences: Experience[];
-  education: Education[];
-  certifications: Certification[];
-}
-
-interface Project {
-  id: string;
-  slug: string;
-  title: string;
-  period: string;
-  association?: string;
-  summary: string;
-  problem?: string;
-  contribution?: string;
-  outcomes: string[];
-  technologies: string[];
-  url?: string;
-  repositoryUrl?: string;
-  status: "online" | "offline" | "archived";
-  image?: {
-    src: string;
-    alt: string;
-    focalPoint: `${number}% ${number}%`;
-    source: string;
-    provisional: boolean;
-  };
-  featured: boolean;
-  sortOrder: number;
-}
-```
-
-`image.alt` é obrigatório quando `image.src` existir. O ponto focal deve ser
-configurável, por exemplo `50% 35%`.
-
-## 10. Critérios de aceite e handoff
-
-- Conteúdo separado dos componentes em módulo próprio.
-- Cinco projetos representados sem fatos inventados.
-- Capas reais/provisórias identificadas e fallback neutro implementável.
-- Projeto offline não apresenta link quebrado.
-- Hero comunica função, proposta e métrica em uma viewport desktop.
-- CTA de projetos permanece visível no primeiro scroll mobile.
-- Layout funcional a 320, 768, 1024 e 1440 px, sem overflow horizontal.
-- Contraste AA, foco visível, landmarks, skip link e movimento reduzido.
-- Imagens responsivas com dimensões declaradas para evitar layout shift.
-- Validar no futuro com testes reais; não alegar Lighthouse, browser ou leitor
-  de tela sem executá-los.
-- Antes da implementação, obter capturas de Aprendia, Swagger e Equilíbrio
-  Financeiro; links de repositório; confirmação das contribuições individuais;
-  autorização de uso das imagens; texto final de contato.
-- O `frontend-specialist` deve preservar a ordem semântica, tokens e modelo de
-  conteúdo. A stack ainda pode ser escolhida, mas nenhuma biblioteca visual deve
-  ser adicionada sem benefício comprovado.
+- Identidade escura e técnica aplicada de forma consistente em toda a página.
+- Nome, métrica, localização, experiências e cinco projetos reais preservados.
+- Nenhum dado fictício da referência visual publicado.
+- Conteúdo separado dos componentes e projetos fáceis de atualizar.
+- Projeto offline sem CTA externo.
+- Hero comunica nome, função, proposta e evidência na primeira dobra desktop.
+- Navegação utilizável a 320, 768, 1024 e 1440px, sem overflow horizontal.
+- Estados de hover, foco, ativo, online e offline especificados.
+- Menu móvel operável por teclado e com retorno de foco ao fechar por `Escape`.
+- Contraste, foco, landmarks, skip link e movimento reduzido tratados.
+- Contato sem segredo exposto e com fallback seguro.
+- Alterações futuras de layout devem atualizar este documento junto do código.
