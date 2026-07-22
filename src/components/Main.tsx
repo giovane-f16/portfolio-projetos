@@ -156,8 +156,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function Main() {
   const contactUrl = resolveContactUrl();
-  const projectCount = String(projects.length).padStart(2, "0");
-  const impact = profile.impactMetrics[0];
 
   return (
     <main id="conteudo">
@@ -194,18 +192,12 @@ export function Main() {
           </div>
 
           <aside className="fact-panel" aria-label="Informações confirmadas">
-            <div>
-              <strong>{impact.value}</strong>
-              <span>{impact.label}</span>
-            </div>
-            <div>
-              <strong>{projectCount}</strong>
-              <span>projetos documentados</span>
-            </div>
-            <div>
-              <strong>SP</strong>
-              <span>São Paulo, Brasil</span>
-            </div>
+            {profile.impactMetrics.map((metric) => (
+              <div key={metric.value}>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </div>
+            ))}
           </aside>
         </div>
 

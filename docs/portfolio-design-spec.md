@@ -44,6 +44,8 @@ terminal nem exigir repertório de programação para navegar.
   APIs e à infraestrutura, com foco em performance, segurança e consistência.
 - **Impacto:** redução documentada de 82% no tempo de resposta em projeto da
   Fundação Cásper Líbero.
+- **Tempo de experiência:** mais de cinco anos, com atuação profissional desde
+  outubro de 2020.
 - **Experiências:** Fundação Cásper Líbero e Mandem Jobs.
 - **Formação:** Full Stack Development na FIAP, Sistemas de Informação na
   UNINOVE e Formação em Servidores no Senac.
@@ -76,8 +78,9 @@ contidos: a leitura, os estados e as evidências têm prioridade sobre ornamento
 
 ### Princípios de experiência
 
-1. **Evidência antes de promessa:** o hero apresenta `−82%`, cinco projetos e
-   localização ao lado da proposta de valor.
+1. **Evidência antes de promessa:** o hero apresenta mais de cinco anos de
+   experiência, atuação Full Stack e experiência Web + Mobile ao lado da
+   proposta de valor.
 2. **Escaneabilidade:** títulos curtos, índices, rótulos monoespaçados e blocos
    com responsabilidades claras.
 3. **Transparência:** projetos offline permanecem documentados, mas não exibem
@@ -107,8 +110,8 @@ Fluxo primário: **posicionamento → prova → competências → contexto profi
   à infraestrutura — com foco em performance, segurança e consistência.`
 - CTA primário: `Ver projetos`
 - CTA secundário: `Entrar em contato`
-- Fatos: `−82% no tempo de resposta`, `05 projetos documentados` e
-  `SP — São Paulo, Brasil`.
+- Fatos: `5+ anos de experiência`, `Full Stack — frontend, backend e cloud` e
+  `Web + Mobile — produtos multiplataforma`.
 
 ## 6. Design tokens
 
@@ -317,9 +320,9 @@ mobile, os textos são empilhados e alinhados ao início.
 ├──────────────────────────────────────────────────────────────────┤
 │ // 01. SOBRE                                                     │
 │ Giovane                          ┌──────────────────────────────┐ │
-│ Ferreira                         │ −82%  tempo de resposta      │ │
-│ Produtos de ponta a ponta...     │ 05    projetos documentados │ │
-│ [Ver projetos] [Contato ↗]       │ SP    São Paulo, Brasil      │ │
+│ Ferreira                         │ 5+ anos      de experiência      │ │
+│ Produtos de ponta a ponta...     │ Full Stack   frontend/backend  │ │
+│ [Ver projetos] [Contato ↗]       │ Web + Mobile multiplataforma │ │
 │ ─────────────── scroll para explorar ───                         │
 ├──────────────────────────────────────────────────────────────────┤
 │ // 02. HABILIDADES    [Frontend] [Backend] [Dados] [Entrega]     │
@@ -349,9 +352,9 @@ mobile, os textos são empilhados e alinhados ao início.
 │ resumo                     │
 │ [Ver projetos]             │
 │ [Entrar em contato ↗]      │
-│ −82%  impacto              │
-│ 05    projetos             │
-│ SP    localização          │
+│ 5+ anos  experiência         │
+│ Full Stack  ponta a ponta  │
+│ Web + Mobile  multiplataforma │
 ├────────────────────────────┤
 │ // 02. HABILIDADES         │
 │ [card empilhado]           │

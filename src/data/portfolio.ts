@@ -82,9 +82,19 @@ export const profile: PortfolioProfile = {
     "Desenvolvo experiências web, aplicações e integrações com foco em performance, segurança e consistência.",
   impactMetrics: [
     {
-      value: "−82%",
-      label: "no tempo de resposta",
-      context: "Melhoria obtida em projeto da Fundação Cásper Líbero.",
+      value: "5+ anos",
+      label: "de experiência",
+      context: "Experiência profissional desde outubro de 2020.",
+    },
+    {
+      value: "Full Stack",
+      label: "frontend, backend e cloud",
+      context: "Atuação ponta a ponta em produtos digitais.",
+    },
+    {
+      value: "Web + Mobile",
+      label: "produtos multiplataforma",
+      context: "Experiência com aplicações web e mobile.",
     },
   ],
   socialLinks: [

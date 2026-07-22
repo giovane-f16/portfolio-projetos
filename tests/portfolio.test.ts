@@ -16,6 +16,26 @@ describe("portfolio content", () => {
     expect(JSON.stringify({ profile, projects })).not.toContain("Figueiredo");
   });
 
+  it("highlights professional experience in the hero facts", () => {
+    expect(profile.impactMetrics).toEqual([
+      {
+        value: "5+ anos",
+        label: "de experiência",
+        context: "Experiência profissional desde outubro de 2020.",
+      },
+      {
+        value: "Full Stack",
+        label: "frontend, backend e cloud",
+        context: "Atuação ponta a ponta em produtos digitais.",
+      },
+      {
+        value: "Web + Mobile",
+        label: "produtos multiplataforma",
+        context: "Experiência com aplicações web e mobile.",
+      },
+    ]);
+  });
+
   it("keeps the five documented projects in their declared order", () => {
     expect(projects).toHaveLength(5);
     expect(projects.map((project) => project.title)).toEqual([
