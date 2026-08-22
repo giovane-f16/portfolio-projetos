@@ -2,8 +2,11 @@
   "name": "portfolio-giovane-ferreira",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "overrides": {
-    "postcss": "8.5.10"
+    "postcss": "8.5.23"
   },
   "scripts": {
     "dev": "next dev",
@@ -14,18 +17,19 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "next": "15.5.20",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "next": "16.3.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^22.15.3",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "eslint": "^9.25.1",
-    "eslint-config-next": "15.5.20",
-    "postcss": "8.5.10",
+    "eslint-config-next": "16.3.2",
+    "jsdom": "^29.1.1",
+    "postcss": "8.5.23",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2"
   }

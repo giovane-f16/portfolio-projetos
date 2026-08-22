@@ -6,9 +6,12 @@ export default function Home() {
   return (
     <>
       <a className="skip-link" href="#conteudo">
-        Pular para o conteúdo
+        <span data-locale-copy="en">Skip to content</span>
+        <span data-locale-copy="pt" lang="pt-BR">
+          Pular para o conteúdo
+        </span>
       </a>
-      <div className="grid-layer" aria-hidden="true" />
+      <div className="background-grid" aria-hidden="true" />
       <Header />
       <Main />
       <Footer />

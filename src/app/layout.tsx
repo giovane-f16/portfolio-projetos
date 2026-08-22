@@ -1,20 +1,32 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const revealBootstrap = `if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){document.documentElement.classList.add('reveal-enabled');window.setTimeout(function(){if(!document.documentElement.hasAttribute('data-reveal-ready'))document.documentElement.classList.remove('reveal-enabled')},3000)}`;
+const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='pt'){root.dataset.locale='pt';root.lang='pt-BR'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
 export const metadata: Metadata = {
-  title: "Giovane Ferreira — Desenvolvedor Full Stack",
+  title: "Giovane Ferreira — Full Stack Developer",
   description:
-    "Portfólio de Giovane Ferreira, desenvolvedor Full Stack em São Paulo: produtos web, APIs e integrações com foco em performance, segurança e consistência.",
-  authors: [{ name: "Giovane Ferreira" }],
+    "Portfolio of Giovane Ferreira, a Full Stack Developer in São Paulo working across web, backend, cloud, and mobile products.",
+  authors: [{ name: "Giovane Ferreira da Silva" }],
+  creator: "Giovane Ferreira da Silva",
+  category: "technology",
+  keywords: [
+    "Full Stack Developer",
+    "React",
+    "Next.js",
+    "PHP",
+    "Python",
+    "Node.js",
+    "WordPress",
+    "São Paulo",
+  ],
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#06131c",
+  themeColor: "#07111f",
   colorScheme: "dark",
 };
 
@@ -22,9 +34,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="en" data-locale="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: revealBootstrap }} />
+        <script dangerouslySetInnerHTML={{ __html: interfaceBootstrap }} />
       </head>
       <body>{children}</body>
     </html>

@@ -1,11 +1,7 @@
-1. O projeto está extremamente GRANDE, com vários arquivos, CSS com mais de MIL LINHAS, sendo que é somente 1 lading page.
-Compacte para somente 3 arquivos, sendo: Header, Main e Footer.
-Mantenha o mesmo design, mas organize o código de forma mais eficiente e modular.
-
-2. As ancores do header aparecem na URL como #exemplo, devido a problemas em SEO, não adicione alteraçoes na URL, mantenha somente o scroll.
-
-3. O Header está bugado, a seção selecionada está diferente da qual aparece com o underline, exemplo, URL: http://localhost:3000/#contato e a seção de "experiência" com o underline abaixo.
-
-4. Utilize um fundo escuro no projeto.
-
-5. A cor do título dos projetos deve ser diferente da cor das descrições, para que fique mais fácil de diferenciar.
+1. Manter a apresentação em `Header`, `Main` e `Footer`.
+2. Não gravar âncoras da navegação interna na URL.
+3. Sincronizar o item ativo com a maior seção visível.
+4. Preservar o canvas navy escuro e o contraste corporativo.
+5. Diferenciar títulos, descrições e metadados dos projetos.
+6. Usar inglês como idioma principal e oferecer português completo.
+7. Manter o conteúdo profissional alinhado ao currículo fornecido.
