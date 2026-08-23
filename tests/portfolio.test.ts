@@ -418,6 +418,14 @@ describe("bilingual corporate interface", () => {
     expect(styles.split("\n").length).toBeLessThan(800);
   });
 
+  it("ships a branded application favicon", () => {
+    const icon = readProjectFile("src/app/icon.svg");
+
+    expect(icon).toContain('viewBox="0 0 64 64"');
+    expect(icon).toContain('fill="#4f8ff7"');
+    expect(icon).toContain('fill="#07111f"');
+  });
+
   it("keeps only the three focused presentation components", () => {
     const componentNames = readdirSync(resolve(projectRoot, "src/components"))
       .filter((file) => file.endsWith(".tsx"))
