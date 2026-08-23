@@ -511,8 +511,12 @@ describe("bilingual corporate interface", () => {
     expect(styles).toMatch(/\.project-card h3\s*{[\s\S]*?color:/);
     expect(styles).toMatch(/\.project-summary\s*{[\s\S]*?color:/);
     expect(styles).toMatch(
-      /\.locale-switch button\s*{[\s\S]*?min-width:\s*44px;[\s\S]*?min-height:\s*44px;/,
+      /\.locale-switch button\s*{[\s\S]*?min-width:\s*40px;[\s\S]*?min-height:\s*36px;/,
     );
+    expect(styles).toMatch(
+      /\.locale-switch\s*{[\s\S]*?border:\s*0;[\s\S]*?background:\s*transparent;/,
+    );
+    expect(styles).not.toMatch(/\.locale-switch(?: button)?\s*{[^}]*border-radius:/);
     expect(styles).not.toContain("min-width: 34px");
     expect(globalStyles.split("\n").length).toBeLessThan(800);
     expect(designSystem).toContain("--font-display: var(--font-inter, Inter)");
