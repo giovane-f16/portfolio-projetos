@@ -56,6 +56,11 @@ documento.
   da hidratação, persistida localmente e não altera a URL.
 - A navegação agrupa as leituras de scroll com `requestAnimationFrame`, mantém o item ativo sincronizado e faz scroll sem adicionar fragmentos à URL.
 - Seções abaixo da dobra usam `content-visibility` para reduzir trabalho inicial de layout e pintura.
+- Tokens de cor, tipografia, espaçamento, forma e movimento são centralizados em
+  [`src/app/design-system.css`](src/app/design-system.css) e documentados em
+  [`docs/design-system.md`](docs/design-system.md).
+- A família Inter é otimizada e servida localmente pelo `next/font`, sem uma
+  requisição de fonte de terceiros no navegador.
 - Não há bibliotecas visuais, analytics ou scripts de terceiros no bundle.
 - Os dados são estáticos, ordenados na fonte e não exigem fetches ou waterfalls em tempo de execução.
 

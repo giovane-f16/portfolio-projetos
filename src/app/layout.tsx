@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./design-system.css";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='pt'){root.dataset.locale='pt';root.lang='pt-BR'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
@@ -34,7 +42,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-locale="en" suppressHydrationWarning>
+    <html lang="en" data-locale="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: interfaceBootstrap }} />
       </head>

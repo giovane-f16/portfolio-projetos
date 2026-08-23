@@ -22,7 +22,8 @@ Use the sources in this order:
 1. `Giovane_Ferreira_da_Silva_Resume.pdf` for professional information;
 2. `Projects.md` for project details and links;
 3. `src/data/portfolio.ts` for the normalized public content;
-4. `src/components/` and `src/app/globals.css` for presentation and behavior.
+4. `src/app/design-system.css`, `src/app/globals.css`, and `src/components/` for
+   presentation and behavior.
 
 The public site intentionally omits the email address contained in the résumé.
 `CONTACT_URL` accepts only HTTPS URLs and falls back to the verified LinkedIn
@@ -70,7 +71,8 @@ of an engineering dossier.
 - Institutional blue indicates actions, navigation, and structure.
 - Warm off-white surfaces give credentials and cases a document-like quality.
 - Mint is reserved for verified/live states.
-- Typography is neutral, local, and high contrast; no font download is required.
+- Typography uses self-hosted Inter through `next/font`, with a neutral system
+  fallback and high contrast.
 - Thin borders, consistent radii, and restrained elevation create hierarchy.
 - The layout avoids decorative dashboards, stock imagery, and simulated code
   terminals.
@@ -97,7 +99,7 @@ of an engineering dossier.
 
 ### Typography
 
-- Display: Arial/Helvetica/system sans, weight 800–900.
+- Display: Inter/system sans, weight 800–900.
 - Body: Inter/system sans, regular and semibold.
 - Metadata: system monospace for dates, indexes, and compact labels.
 - Hero title: `clamp(3.4rem, 6.6vw, 6.15rem)`.

@@ -19,6 +19,16 @@ const navigation: Array<{ label: LocalizedText; sectionId: string }> = [
   { label: { en: "Contact", pt: "Contato" }, sectionId: "contato" },
 ];
 
+const scrollInterruptionKeys = new Set([
+  "ArrowDown",
+  "ArrowUp",
+  "End",
+  "Home",
+  "PageDown",
+  "PageUp",
+  " ",
+]);
+
 const pageMetadata: Record<Locale, { title: string; description: string }> = {
   en: {
     title: "Giovane Ferreira — Full Stack Developer",
@@ -151,6 +161,17 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const firstNavigationRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const pendingNavigationRef = useRef<string | null>(null);
+  const pendingNavigationTimerRef = useRef<number | null>(null);
+
+  const releasePendingNavigation = useCallback(() => {
+    pendingNavigationRef.current = null;
+
+    if (pendingNavigationTimerRef.current !== null) {
+      window.clearTimeout(pendingNavigationTimerRef.current);
+      pendingNavigationTimerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     applyLocale(getLocaleSnapshot());
@@ -176,6 +197,32 @@ export function Header() {
         const { top, bottom } = section.getBoundingClientRect();
         return { id: section.id, top, bottom };
       });
+      const pendingSectionId = pendingNavigationRef.current;
+
+      if (pendingSectionId) {
+        const targetIndex = sections.findIndex(
+          (section) => section.id === pendingSectionId,
+        );
+        const targetBounds = sectionBounds[targetIndex];
+        const reachedFirstSection = targetIndex === 0 && window.scrollY <= 1;
+        const reachedLastSection =
+          targetIndex === sections.length - 1 &&
+          window.scrollY + viewportHeight >= pageBottom - 2;
+        const reachedAlignedSection =
+          targetBounds !== undefined &&
+          Math.abs(targetBounds.top - headerBottom) <= 2;
+
+        if (
+          !reachedFirstSection &&
+          !reachedLastSection &&
+          !reachedAlignedSection
+        ) {
+          return;
+        }
+
+        releasePendingNavigation();
+      }
+
       const nextSectionId = resolveActiveSection({
         sections: sectionBounds,
         scrollY: window.scrollY,
@@ -197,6 +244,18 @@ export function Header() {
       }
     };
 
+    const finishPendingNavigation = () => {
+      if (pendingNavigationRef.current === null) return;
+      releasePendingNavigation();
+      scheduleUpdate();
+    };
+
+    const finishPendingNavigationOnKey = (event: KeyboardEvent) => {
+      if (scrollInterruptionKeys.has(event.key)) {
+        finishPendingNavigation();
+      }
+    };
+
     const observer =
       "IntersectionObserver" in window
         ? new IntersectionObserver(scheduleUpdate, {
@@ -208,6 +267,15 @@ export function Header() {
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
     window.addEventListener("portfolio:locale-change", scheduleUpdate);
+    window.addEventListener("scrollend", finishPendingNavigation);
+    window.addEventListener("wheel", finishPendingNavigation, { passive: true });
+    window.addEventListener("touchstart", finishPendingNavigation, {
+      passive: true,
+    });
+    window.addEventListener("pointerdown", finishPendingNavigation, {
+      passive: true,
+    });
+    window.addEventListener("keydown", finishPendingNavigationOnKey);
     scheduleUpdate();
 
     return () => {
@@ -215,9 +283,15 @@ export function Header() {
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
       window.removeEventListener("portfolio:locale-change", scheduleUpdate);
+      window.removeEventListener("scrollend", finishPendingNavigation);
+      window.removeEventListener("wheel", finishPendingNavigation);
+      window.removeEventListener("touchstart", finishPendingNavigation);
+      window.removeEventListener("pointerdown", finishPendingNavigation);
+      window.removeEventListener("keydown", finishPendingNavigationOnKey);
       window.cancelAnimationFrame(animationFrame);
+      releasePendingNavigation();
     };
-  }, []);
+  }, [releasePendingNavigation]);
 
   useEffect(() => {
     const handleScrollRequest = (event: MouseEvent) => {
@@ -302,15 +376,24 @@ export function Header() {
   const handleNavigation = useCallback(
     (event: ReactMouseEvent<HTMLButtonElement>, sectionId: string) => {
       event.preventDefault();
+      releasePendingNavigation();
+      pendingNavigationRef.current = sectionId;
+      pendingNavigationTimerRef.current = window.setTimeout(() => {
+        releasePendingNavigation();
+        window.dispatchEvent(new Event("scroll"));
+      }, 2000);
       setActiveSection(sectionId);
-      scrollSectionIntoView(sectionId);
+
+      if (!scrollSectionIntoView(sectionId)) {
+        releasePendingNavigation();
+      }
 
       if (isOpen) {
         setIsOpen(false);
         window.requestAnimationFrame(() => menuButtonRef.current?.focus());
       }
     },
-    [isOpen],
+    [isOpen, releasePendingNavigation],
   );
 
   const handleLocaleChange = (nextLocale: Locale) => {

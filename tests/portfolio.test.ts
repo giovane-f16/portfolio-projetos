@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createElement } from "react";
 import {
+  act,
   cleanup,
   fireEvent,
   render,
@@ -373,6 +374,102 @@ describe("bilingual corporate interface", () => {
     expect(main).not.toMatch(/href=["']#(?:sobre|habilidades|experiencia|projetos|contato)/);
   });
 
+  it("keeps the clicked navigation underline stable during smooth scrolling", () => {
+    installBrowserMocks();
+
+    const animationFrames: FrameRequestCallback[] = [];
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation(
+      (callback: FrameRequestCallback) => {
+        animationFrames.push(callback);
+        return animationFrames.length;
+      },
+    );
+    vi.spyOn(window, "scrollY", "get").mockReturnValue(120);
+    vi.spyOn(window, "innerHeight", "get").mockReturnValue(900);
+    vi.spyOn(Element.prototype, "scrollHeight", "get").mockReturnValue(4000);
+
+    const positions: Record<string, { top: number; bottom: number }> = {
+      sobre: { top: -120, bottom: 580 },
+      habilidades: { top: 580, bottom: 1100 },
+      experiencia: { top: 1100, bottom: 1700 },
+      projetos: { top: 1700, bottom: 2400 },
+      contato: { top: 2400, bottom: 3100 },
+    };
+
+    Object.entries(positions).forEach(([id]) => {
+      const section = document.createElement("section");
+      section.id = id;
+      Object.defineProperty(section, "scrollIntoView", {
+        configurable: true,
+        value: vi.fn(),
+      });
+      document.body.append(section);
+    });
+
+    vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(
+      function getBounds(this: Element) {
+        if (this.classList.contains("site-header")) {
+          return { top: 0, bottom: 76 } as DOMRect;
+        }
+
+        const bounds = positions[this.id] ?? { top: 0, bottom: 0 };
+        return bounds as DOMRect;
+      },
+    );
+
+    render(createElement(Header));
+    act(() => animationFrames.shift()?.(0));
+
+    const experienceButton = screen.getByText("Experience").closest("button");
+
+    expect(experienceButton).toBeTruthy();
+
+    fireEvent.click(experienceButton as HTMLButtonElement);
+    expect(experienceButton?.getAttribute("aria-current")).toBe("location");
+
+    fireEvent.scroll(window);
+    act(() => animationFrames.shift()?.(16));
+
+    expect(experienceButton?.getAttribute("aria-current")).toBe("location");
+    expect(
+      screen
+        .getByText("Expertise")
+        .closest("button")
+        ?.getAttribute("aria-current"),
+    ).toBeNull();
+
+    positions.experiencia = { top: 152, bottom: 752 };
+    fireEvent.scroll(window);
+    act(() => animationFrames.shift()?.(32));
+
+    expect(experienceButton?.getAttribute("aria-current")).toBe("location");
+
+    fireEvent(window, new Event("scrollend"));
+    act(() => animationFrames.shift()?.(48));
+
+    positions.experiencia = { top: -600, bottom: 0 };
+    positions.projetos = { top: 76, bottom: 676 };
+    fireEvent.scroll(window);
+    act(() => animationFrames.shift()?.(64));
+
+    const workButton = screen.getByText("Work").closest("button");
+
+    expect(workButton?.getAttribute("aria-current")).toBe("location");
+
+    const contactButton = screen.getByText("Contact").closest("button");
+    fireEvent.click(contactButton as HTMLButtonElement);
+    fireEvent.scroll(window);
+    act(() => animationFrames.shift()?.(80));
+
+    expect(contactButton?.getAttribute("aria-current")).toBe("location");
+
+    fireEvent.wheel(window);
+    act(() => animationFrames.shift()?.(96));
+
+    expect(workButton?.getAttribute("aria-current")).toBe("location");
+    expect(contactButton?.getAttribute("aria-current")).toBeNull();
+  });
+
   it("keeps the active navigation item aligned with the visible section", () => {
     const sections = [
       { id: "sobre", top: -700, bottom: 80 },
@@ -403,7 +500,9 @@ describe("bilingual corporate interface", () => {
   });
 
   it("implements the corporate visual tokens and clear project hierarchy", () => {
-    const styles = readProjectFile("src/app/globals.css");
+    const globalStyles = readProjectFile("src/app/globals.css");
+    const designSystem = readProjectFile("src/app/design-system.css");
+    const styles = `${designSystem}\n${globalStyles}`;
 
     expect(styles).toContain("--navy-950: #07111f");
     expect(styles).toContain("--blue-500: #4f8ff7");
@@ -415,7 +514,20 @@ describe("bilingual corporate interface", () => {
       /\.locale-switch button\s*{[\s\S]*?min-width:\s*44px;[\s\S]*?min-height:\s*44px;/,
     );
     expect(styles).not.toContain("min-width: 34px");
-    expect(styles.split("\n").length).toBeLessThan(800);
+    expect(globalStyles.split("\n").length).toBeLessThan(800);
+    expect(designSystem).toContain("--font-display: var(--font-inter, Inter)");
+    expect(designSystem).toContain("--text-nav: 0.9375rem");
+    expect(globalStyles).toMatch(
+      /\.site-navigation button\s*{[\s\S]*?font-size:\s*var\(--text-nav\)/,
+    );
+    const layout = readProjectFile("src/app/layout.tsx");
+
+    expect(layout).toContain(
+      'import { Inter } from "next/font/google"',
+    );
+    expect(layout).toMatch(
+      /<html[\s\S]*?className=\{inter\.variable\}[\s\S]*?<body>/,
+    );
   });
 
   it("ships a branded application favicon", () => {
