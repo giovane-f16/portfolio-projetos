@@ -35,7 +35,7 @@ profile.
 - Role: Full Stack Developer.
 - Location: São Paulo, Brazil.
 - Experience: technology roles since October 2020.
-- Current résumé roles: Junior Systems Programmer at Fundação Cásper Líbero and
+- Current résumé roles: Junior Software Developer at Fundação Cásper Líbero and
   freelance Full Stack Developer at Mandem Jobs — Design Studio.
 - Previous role: IT Intern at Fundação Cásper Líbero.
 - Education: FIAP, UNINOVE, and Centro Universitário Senac.

@@ -92,7 +92,7 @@ describe("resume-backed portfolio content", () => {
     ).toEqual([
       {
         organization: "Fundação Cásper Líbero",
-        role: "Junior Systems Programmer",
+        role: "Junior Software Developer",
         period: "Oct 2022 — Present",
       },
       {

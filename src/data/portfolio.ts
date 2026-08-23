@@ -201,7 +201,7 @@ export const profile: PortfolioProfile = {
   experiences: [
     {
       organization: "Fundação Cásper Líbero",
-      role: { en: "Junior Systems Programmer", pt: "Programador de Sistemas Júnior" },
+      role: { en: "Junior Software Developer", pt: "Programador de Sistemas Júnior" },
       period: { en: "Oct 2022 — Present", pt: "Out 2022 — Atual" },
       location: { en: "São Paulo, Brazil", pt: "São Paulo, Brasil" },
       highlights: [
