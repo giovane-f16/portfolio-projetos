@@ -12,7 +12,7 @@ const inter = Inter({
 const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='pt'){root.dataset.locale='pt';root.lang='pt-BR'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
 export const metadata: Metadata = {
-  title: "Giovane Ferreira — Full Stack Developer",
+  title: "Giovane Ferreira",
   description:
     "Portfolio of Giovane Ferreira, a Full Stack Developer in São Paulo working across web, backend, cloud, and mobile products.",
   authors: [{ name: "Giovane Ferreira da Silva" }],

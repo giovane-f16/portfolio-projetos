@@ -268,9 +268,7 @@ describe("bilingual corporate interface", () => {
       applyLocale("pt");
 
       expect(root).toEqual({ dataset: { locale: "pt" }, lang: "pt-BR" });
-      expect(fakeDocument.title).toBe(
-        "Giovane Ferreira — Desenvolvedor Full Stack",
-      );
+      expect(fakeDocument.title).toBe("Giovane Ferreira");
       expect(metadata.setAttribute).toHaveBeenCalledWith(
         "content",
         expect.stringContaining("Portfólio de Giovane Ferreira"),
@@ -536,10 +534,15 @@ describe("bilingual corporate interface", () => {
 
   it("ships a branded application favicon", () => {
     const icon = readProjectFile("src/app/icon.svg");
+    const brandLogo = readProjectFile("public/logo.svg");
+    const iconPath = icon.match(/<path d="([^"]+)"/)?.[1];
+    const brandPath = brandLogo.match(/<path d="([^"]+)"/)?.[1];
 
-    expect(icon).toContain('viewBox="0 0 64 64"');
-    expect(icon).toContain('fill="#4f8ff7"');
-    expect(icon).toContain('fill="#07111f"');
+    expect(icon).toContain('viewBox="68 35 1177 1186"');
+    expect(icon).toContain('aria-label="Logo GF de Giovane Ferreira"');
+    expect(icon).toContain('fill="#07111fe8"');
+    expect(icon).toContain("path { fill: #ffffff; }");
+    expect(iconPath).toBe(brandPath);
   });
 
   it("keeps only the three focused presentation components", () => {

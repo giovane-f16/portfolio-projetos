@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   startTransition,
   type MouseEvent as ReactMouseEvent,
@@ -31,12 +32,12 @@ const scrollInterruptionKeys = new Set([
 
 const pageMetadata: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: "Giovane Ferreira — Full Stack Developer",
+    title: "Giovane Ferreira",
     description:
       "Portfolio of Giovane Ferreira, a Full Stack Developer in São Paulo working across web, backend, cloud, and mobile products.",
   },
   pt: {
-    title: "Giovane Ferreira — Desenvolvedor Full Stack",
+    title: "Giovane Ferreira",
     description:
       "Portfólio de Giovane Ferreira, Desenvolvedor Full Stack em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   },
@@ -415,7 +416,15 @@ export function Header() {
           onClick={(event) => handleNavigation(event, "sobre")}
         >
           <span className="brand-mark" aria-hidden="true">
-            GF
+            <Image
+              className="brand-logo"
+              src="/logo.svg"
+              alt=""
+              width={38}
+              height={38}
+              sizes="38px"
+              unoptimized
+            />
           </span>
           <span className="brand-copy">
             <strong translate="no">Giovane Ferreira</strong>

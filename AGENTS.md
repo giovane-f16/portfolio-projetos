@@ -30,3 +30,13 @@ Every feature or bug fix should include relevant tests once a test framework is 
 ## Commit & Pull Request Guidelines
 
 Because no Git history is available in this checkout, use concise, imperative commit subjects; Conventional Commit prefixes are encouraged (for example, `feat: add expense tracker`). Keep commits scoped to one logical change. Pull requests should explain the change, list verification commands, link related issues, and include before/after screenshots for UI updates. Never commit secrets; provide sanitized examples such as `.env.example` instead.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
