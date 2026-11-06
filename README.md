@@ -1,9 +1,8 @@
-# Portfólio corporativo — Giovane Ferreira
+# Portfólio — Giovane Ferreira
 
 Portfólio bilíngue desenvolvido com Next.js, React e TypeScript. A experiência
 usa inglês como idioma principal e oferece a versão completa em português, com
-uma direção visual corporativa baseada em navy institucional, superfícies de
-documento e projetos apresentados como cases compactos.
+blocos em vermelho e grafite sobre fundo claro e um carrossel com os projetos.
 
 O histórico profissional, a formação, os idiomas, as certificações e a stack
 foram atualizados a partir de `Giovane_Ferreira_da_Silva_Resume.pdf`. Os projetos
@@ -55,12 +54,11 @@ documento.
 - Inglês é renderizado por padrão. A preferência por português é aplicada antes
   da hidratação, persistida localmente e não altera a URL.
 - A navegação agrupa as leituras de scroll com `requestAnimationFrame`, mantém o item ativo sincronizado e faz scroll sem adicionar fragmentos à URL.
-- Seções abaixo da dobra usam `content-visibility` para reduzir trabalho inicial de layout e pintura.
 - Tokens de cor, tipografia, espaçamento, forma e movimento são centralizados em
   [`src/app/design-system.css`](src/app/design-system.css) e documentados em
   [`docs/design-system.md`](docs/design-system.md).
-- A família Inter é otimizada e servida localmente pelo `next/font`, sem uma
-  requisição de fonte de terceiros no navegador.
+- As fontes Archivo, Instrument Sans e JetBrains Mono são servidas localmente pelo
+  `next/font`, sem requisição de fonte de terceiros no navegador.
 - Não há bibliotecas visuais, analytics ou scripts de terceiros no bundle.
 - Os dados são estáticos, ordenados na fonte e não exigem fetches ou waterfalls em tempo de execução.
 

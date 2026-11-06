@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import {
   profile,
@@ -74,248 +75,209 @@ function ExternalLink({
 
 function SectionHeading({
   id,
-  index,
-  eyebrow,
+  kicker,
   title,
   intro,
 }: {
   id: string;
-  index: string;
-  eyebrow: LocalizedText;
+  kicker: LocalizedText;
   title: LocalizedText;
-  intro: LocalizedText;
+  intro?: LocalizedText;
 }) {
   return (
     <div className="section-heading" data-reveal>
-      <div className="section-heading-index" aria-hidden="true">
-        {index}
-      </div>
-      <div>
-        <p className="section-kicker">
-          <Copy text={eyebrow} />
-        </p>
-        <h2 id={id}>
-          <Copy text={title} />
-        </h2>
+      <p className="section-kicker">
+        <Copy text={kicker} />
+      </p>
+      <h2 id={id}>
+        <Copy text={title} />
+      </h2>
+      {intro ? (
         <p className="section-intro">
           <Copy text={intro} />
         </p>
-      </div>
+      ) : null}
     </div>
   );
 }
 
-function getProjectType(project: Project): LocalizedText {
-  if (project.technologies.includes("WordPress")) {
-    return { en: "Web platform", pt: "Plataforma web" };
+function ProjectThumbnail({ project }: { project: Project }) {
+  if (!project.image) {
+    return (
+      <div className="project-thumb project-thumb-empty">
+        <Image src="/logo.svg" alt="" width={56} height={56} unoptimized />
+        <span translate="no">{project.title}</span>
+      </div>
+    );
   }
 
-  if (project.technologies.includes("Node.js")) {
-    return { en: "Backend", pt: "Backend" };
-  }
+  const { src, alt, focalPoint } = project.image;
 
-  return { en: "Product", pt: "Produto" };
+  return (
+    <div className="project-thumb">
+      {(["en", "pt"] as const).map((locale) => (
+        <span data-locale-copy={locale} lang={locale === "pt" ? "pt-BR" : undefined} key={locale}>
+          <Image
+            src={src}
+            alt={alt[locale]}
+            fill
+            sizes="(max-width: 767px) 80vw, 380px"
+            style={{ objectPosition: focalPoint }}
+          />
+        </span>
+      ))}
+    </div>
+  );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project }: { project: Project }) {
   const status = projectStatusLabels[project.status];
 
   return (
-    <article
-      className={`project-card${index === 0 ? " project-card-featured" : ""}`}
-      data-reveal
-    >
-      <div className="project-card-topline">
-        <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
-        <span className="project-category">
-          <Copy text={getProjectType(project)} />
-        </span>
-        <span className={`project-status status-${project.status}`}>
-          <span aria-hidden="true" />
-          <Copy text={status} />
-        </span>
-      </div>
-
+    <article className="project-card">
+      <ProjectThumbnail project={project} />
       <div className="project-card-body">
         <p className="project-period">
-          <Copy text={project.period} />
-          {project.association ? ` · ${project.association}` : ""}
+          <span>
+            <Copy text={project.period} />
+            {project.association ? ` · ${project.association}` : ""}
+          </span>
+          <span className={`project-status status-${project.status}`}>
+            <span aria-hidden="true" />
+            <Copy text={status} />
+          </span>
         </p>
         <h3 translate="no">{project.title}</h3>
         <p className="project-summary">
           <Copy text={project.summary} />
         </p>
-
-        <dl className="project-evidence">
-          {project.problem ? (
-            <div>
-              <dt>
-                <Copy text={{ en: "Challenge", pt: "Desafio" }} />
-              </dt>
-              <dd>
-                <Copy text={project.problem} />
-              </dd>
-            </div>
-          ) : null}
-          <div>
-            <dt>
-              <Copy text={{ en: "Outcome", pt: "Resultado" }} />
-            </dt>
-            <dd>
-              <Copy text={project.outcomes[0]} />
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div className="project-card-footer">
-        <ul className="tag-list" translate="no">
-          {project.technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
-          ))}
-        </ul>
-
-        {project.status === "online" && project.url ? (
-          <ExternalLink className="text-link" href={project.url}>
-            <Copy text={{ en: "View Project", pt: "Ver projeto" }} />
-          </ExternalLink>
-        ) : (
-          <span className="project-unavailable">
-            <Copy text={{ en: "Link Unavailable", pt: "Link indisponível" }} />
-          </span>
-        )}
+        <div className="project-card-footer">
+          <ul className="tag-list" translate="no">
+            {project.technologies.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+          {project.status === "online" && project.url ? (
+            <ExternalLink className="text-link" href={project.url}>
+              <Copy text={{ en: "View Project", pt: "Ver projeto" }} />
+            </ExternalLink>
+          ) : (
+            <span className="project-unavailable">
+              <Copy text={{ en: "Link Unavailable", pt: "Link indisponível" }} />
+            </span>
+          )}
+        </div>
       </div>
     </article>
   );
 }
 
+function ProjectCarousel() {
+  return (
+    <div className="project-carousel" data-reveal>
+      <label className="carousel-control">
+        <input className="carousel-toggle" type="checkbox" />
+        <Copy text={{ en: "Pause animation", pt: "Pausar animação" }} />
+      </label>
+      <div className="carousel-viewport">
+        <div className="carousel-track">
+          <ul className="carousel-group">
+            {projects.map((project) => (
+              <li key={project.id}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
+          <ul className="carousel-group" aria-hidden="true" inert>
+            {projects.map((project) => (
+              <li key={project.id}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Main() {
   const contactUrl = resolveContactUrl();
+  const currentJob = profile.experiences[0];
 
   return (
     <main id="conteudo" tabIndex={-1}>
-      <section className="hero shell" id="sobre" aria-labelledby="hero-title">
-        <div className="hero-orbit" aria-hidden="true" />
-        <div className="hero-layout">
+      <section className="hero-block" id="sobre" aria-labelledby="hero-title">
+        <div className="hero shell">
           <div className="hero-copy" data-reveal>
-            <div className="availability-line">
-              <span className="availability-dot" aria-hidden="true" />
-              <Copy text={profile.availability} />
-            </div>
-            <p className="hero-role">
-              {profile.professionalName} <span aria-hidden="true">/</span>{" "}
-              <Copy text={profile.role} />
+            <p className="hero-eyebrow">
+              <Copy text={profile.role} /> <span aria-hidden="true">·</span>{" "}
+              <Copy text={profile.location} />
             </p>
             <h1 id="hero-title">
-              <Copy
-                text={{
-                  en: "Building Reliable Digital Products, End to End.",
-                  pt: "Construindo produtos digitais confiáveis, de ponta a ponta.",
-                }}
-              />
+              <Copy text={{ en: "Hi, I’m Giovane.", pt: "Oi, eu sou Giovane." }} />
             </h1>
             <p className="hero-summary">
               <Copy text={profile.summary} />
             </p>
             <div className="hero-actions">
-              <button className="button button-primary" data-scroll-to="projetos">
-                <Copy text={{ en: "Explore Selected Work", pt: "Conheça os projetos" }} />
+              <button className="button button-light" data-scroll-to="projetos">
+                <Copy text={{ en: "See my projects", pt: "Ver meus projetos" }} />
                 <span aria-hidden="true">↓</span>
               </button>
-              <button
-                className="button button-secondary"
-                data-scroll-to="experiencia"
-              >
-                <Copy text={{ en: "View Experience", pt: "Ver experiência" }} />
+              <button className="button button-outline-light" data-scroll-to="experiencia">
+                <Copy text={{ en: "Where I’ve worked", pt: "Onde trabalhei" }} />
               </button>
             </div>
           </div>
 
-          <aside
-            className="profile-card"
-            aria-labelledby="profile-overview-title"
-            data-reveal
-          >
-            <div className="profile-card-header">
-              <span id="profile-overview-title">
-                <Copy text={{ en: "Profile Overview", pt: "Visão do perfil" }} />
+          <div className="hero-signature" aria-hidden="true">
+            <Image src="/logo.svg" alt="" width={360} height={363} unoptimized priority />
+          </div>
+
+          <div className="hero-now" data-reveal>
+            <p>
+              <span className="hero-now-label">
+                <Copy text={{ en: "Now", pt: "Agora" }} />
               </span>
-              <span>GF—01</span>
-            </div>
-            <div className="profile-monogram" aria-hidden="true">
-              GF
-            </div>
-            <div className="profile-identity">
-              <strong translate="no">{profile.name}</strong>
-              <span>
-                <Copy text={profile.role} />
-              </span>
-              <span>
-                <Copy text={profile.location} />
-              </span>
-            </div>
-            <div className="profile-competencies">
-              <p>
-                <Copy text={{ en: "Core competencies", pt: "Competências centrais" }} />
-              </p>
-              <ul>
-                {profile.keyCompetencies.map((competency) => (
-                  <li key={competency.en}>
-                    <span aria-hidden="true">+</span>
-                    <Copy text={competency} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="profile-links">
+              <Copy text={currentJob.role} /> · <span translate="no">{currentJob.organization}</span>
+            </p>
+            <div className="hero-links">
               {profile.socialLinks.map((link) => (
                 <ExternalLink href={link.href} key={link.label}>
                   <span translate="no">{link.label}</span>
                 </ExternalLink>
               ))}
             </div>
-          </aside>
-        </div>
-
-        <div className="metric-grid" data-reveal>
-          {profile.impactMetrics.map((metric, index) => (
-            <div className="metric" key={metric.value.en}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>
-                <Copy text={metric.value} />
-              </strong>
-              <p>
-                <Copy text={metric.label} />
-              </p>
-            </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      <section
-        className="content-section expertise-section"
-        id="habilidades"
-        aria-labelledby="expertise-title"
-      >
+      <section className="content-section projects-section" id="projetos" aria-labelledby="projects-title">
         <div className="shell">
           <SectionHeading
-            id="expertise-title"
-            index="01"
-            eyebrow={{ en: "Expertise", pt: "Especialidades" }}
-            title={{
-              en: "Engineering Breadth. Delivery Focus.",
-              pt: "Amplitude técnica. Foco em entrega.",
-            }}
+            id="projects-title"
+            kicker={{ en: "Projects", pt: "Projetos" }}
+            title={{ en: "What I’ve built", pt: "O que eu construí" }}
             intro={{
-              en: "A full-stack practice connecting interface quality, platform reliability, and the operational detail required to ship with confidence.",
-              pt: "Uma atuação full stack que conecta qualidade de interface, confiabilidade de plataforma e o rigor operacional necessário para entregar com segurança.",
+              en: "School projects, client work, and sites in production.",
+              pt: "Projetos da pós, trabalhos para clientes e sites em produção.",
             }}
           />
+        </div>
+        <ProjectCarousel />
+      </section>
 
-          <div className="capability-grid">
+      <section className="content-section skills-section shell" id="habilidades" aria-labelledby="skills-title">
+        <div className="skills-block">
+          <SectionHeading
+            id="skills-title"
+            kicker={{ en: "Skills", pt: "Habilidades" }}
+            title={{ en: "What I work with", pt: "Com o que trabalho" }}
+          />
+          <div className="skill-grid">
             {profile.capabilities.map((capability) => (
-              <article className="capability-card" key={capability.index} data-reveal>
-                <span className="capability-index">{capability.index}</span>
+              <article className="skill-card" key={capability.index} data-reveal>
                 <h3>
                   <Copy text={capability.title} />
                 </h3>
@@ -330,127 +292,81 @@ export function Main() {
               </article>
             ))}
           </div>
-
-          <div className="stack-directory" data-reveal>
-            <div className="stack-directory-heading">
-              <p>
-                <Copy text={{ en: "Technology directory", pt: "Diretório de tecnologias" }} />
-              </p>
-              <span>
-                <Copy text={{ en: "Current professional toolkit", pt: "Ferramentas profissionais atuais" }} />
-              </span>
-            </div>
-            <div className="stack-group-grid">
-              {profile.skillGroups.map((group) => (
-                <div className="stack-group" key={group.title.en}>
-                  <h3>
-                    <Copy text={group.title} />
-                  </h3>
-                  <p translate="no">{group.items.join(" · ")}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      <section
-        className="content-section experience-section shell"
-        id="experiencia"
-        aria-labelledby="experience-title"
-      >
+      <section className="content-section experience-section shell" id="experiencia" aria-labelledby="experience-title">
         <SectionHeading
           id="experience-title"
-          index="02"
-          eyebrow={{ en: "Experience", pt: "Experiência" }}
-          title={{
-            en: "Experience Built in Production.",
-            pt: "Experiência construída em produção.",
-          }}
-          intro={{
-            en: "A career developed through software delivery, platform operations, and direct support for real organizations and users.",
-            pt: "Uma trajetória desenvolvida entre entrega de software, operação de plataformas e suporte direto a organizações e usuários reais.",
-          }}
+          kicker={{ en: "Experience", pt: "Experiência" }}
+          title={{ en: "Where I’ve worked", pt: "Onde trabalhei" }}
         />
 
         <div className="experience-layout">
-          <div className="timeline">
-            {profile.experiences.map((experience, index) => (
-              <article
-                className="experience-item"
-                key={`${experience.organization}-${experience.role.en}`}
-                data-reveal
-              >
-                <div className="timeline-marker" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="experience-meta">
-                  <p>
-                    <Copy text={experience.period} />
-                  </p>
-                  {experience.location ? (
-                    <span>
-                      <Copy text={experience.location} />
-                    </span>
-                  ) : null}
-                </div>
-                <h3 translate="no">{experience.organization}</h3>
-                <p className="experience-role">
-                  <Copy text={experience.role} />
+          <ol className="job-list">
+            {profile.experiences.map((experience) => (
+              <li className="job" key={`${experience.organization}-${experience.role.en}`} data-reveal>
+                <p className="job-period">
+                  <Copy text={experience.period} />
                 </p>
-                <ul>
-                  {experience.highlights.map((highlight) => (
-                    <li key={highlight.en}>
-                      <Copy text={highlight} />
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                <div>
+                  <h3>
+                    <Copy text={experience.role} />
+                  </h3>
+                  <p className="job-org" translate="no">
+                    {experience.organization}
+                  </p>
+                  <ul>
+                    {experience.highlights.map((highlight) => (
+                      <li key={highlight.en}>
+                        <Copy text={highlight} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <aside className="credentials-panel" data-reveal>
+          <aside className="credentials" data-reveal>
             <div className="credential-group">
-              <p className="credential-label">
+              <h3>
                 <Copy text={{ en: "Education", pt: "Formação" }} />
-              </p>
+              </h3>
               <ul>
                 {profile.education.map((item) => (
                   <li key={item.course.en}>
-                    <span translate="no">{item.institution}</span>
                     <strong>
                       <Copy text={item.course} />
                     </strong>
-                    <small>
-                      <Copy text={item.period} />
-                    </small>
+                    <span>
+                      <span translate="no">{item.institution}</span> · <Copy text={item.period} />
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="credential-group credential-compact">
-              <p className="credential-label">
+            <div className="credential-group">
+              <h3>
                 <Copy text={{ en: "Languages", pt: "Idiomas" }} />
-              </p>
+              </h3>
               <ul>
                 {profile.languages.map((language) => (
                   <li key={language.name.en}>
                     <strong>
                       <Copy text={language.name} />
                     </strong>
-                    <small>
+                    <span>
                       <Copy text={language.proficiency} />
-                    </small>
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="credential-group credential-compact">
-              <p className="credential-label">
-                <Copy text={{ en: "Certifications", pt: "Certificações" }} />
-              </p>
+            <div className="credential-group">
+              <h3>
+                <Copy text={{ en: "Certificates", pt: "Certificados" }} />
+              </h3>
               <ul>
                 {profile.certifications.map((certification) => (
                   <li key={certification.en}>
@@ -465,70 +381,28 @@ export function Main() {
         </div>
       </section>
 
-      <section
-        className="content-section projects-section"
-        id="projetos"
-        aria-labelledby="projects-title"
-      >
-        <div className="shell">
-          <SectionHeading
-            id="projects-title"
-            index="03"
-            eyebrow={{ en: "Selected work", pt: "Projetos selecionados" }}
-            title={{
-              en: "Work With a Clear Purpose.",
-              pt: "Projetos com propósito claro.",
-            }}
-            intro={{
-              en: "A selection of educational, editorial, API, and institutional products — presented through their context and delivered outcome.",
-              pt: "Uma seleção de produtos educacionais, editoriais, APIs e plataformas institucionais — apresentados por contexto e resultado entregue.",
-            }}
-          />
-          <div className="project-grid">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="contact-section shell"
-        id="contato"
-        aria-labelledby="contact-title"
-      >
-        <div className="contact-card" data-reveal>
-          <div className="contact-watermark" aria-hidden="true">
-            GF
-          </div>
-          <div className="contact-copy">
-            <p className="section-kicker">
-              <Copy text={{ en: "04 · Start a conversation", pt: "04 · Inicie uma conversa" }} />
-            </p>
+      <section className="contact-section shell" id="contato" aria-labelledby="contact-title">
+        <div className="contact-block" data-reveal>
+          <div>
             <h2 id="contact-title">
-              <Copy
-                text={{
-                  en: "Let’s Turn the Next Challenge into a Dependable Product.",
-                  pt: "Vamos transformar o próximo desafio em um produto confiável.",
-                }}
-              />
+              <Copy text={{ en: "Got a project or a job opening?", pt: "Tem um projeto ou uma vaga?" }} />
             </h2>
             <p>
               <Copy
                 text={{
-                  en: "For product opportunities, technical challenges, or collaborations, reach out through the configured channel or a professional network.",
-                  pt: "Para oportunidades de produto, desafios técnicos ou colaborações, entre em contato pelo canal configurado ou por uma rede profissional.",
+                  en: "Send me a message on LinkedIn. My code is on GitHub.",
+                  pt: "Me chama no LinkedIn. Meu código está no GitHub.",
                 }}
               />
             </p>
           </div>
           <div className="contact-actions">
             <ExternalLink className="button button-light" href={contactUrl}>
-              <Copy text={{ en: "Start a Conversation", pt: "Iniciar conversa" }} />
+              <Copy text={{ en: "Message me", pt: "Falar comigo" }} />
             </ExternalLink>
             {profile.socialLinks.map((link) =>
               isSameDestination(link.href, contactUrl) ? null : (
-                <ExternalLink className="button button-ghost-light" href={link.href} key={link.label}>
+                <ExternalLink className="button button-outline-light" href={link.href} key={link.label}>
                   <span translate="no">{link.label}</span>
                 </ExternalLink>
               ),

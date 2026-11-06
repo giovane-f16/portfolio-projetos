@@ -14,9 +14,9 @@ import type { Locale, LocalizedText } from "@/data/portfolio";
 
 const navigation: Array<{ label: LocalizedText; sectionId: string }> = [
   { label: { en: "Profile", pt: "Perfil" }, sectionId: "sobre" },
-  { label: { en: "Expertise", pt: "Especialidades" }, sectionId: "habilidades" },
-  { label: { en: "Experience", pt: "Experiência" }, sectionId: "experiencia" },
   { label: { en: "Work", pt: "Projetos" }, sectionId: "projetos" },
+  { label: { en: "Skills", pt: "Habilidades" }, sectionId: "habilidades" },
+  { label: { en: "Experience", pt: "Experiência" }, sectionId: "experiencia" },
   { label: { en: "Contact", pt: "Contato" }, sectionId: "contato" },
 ];
 

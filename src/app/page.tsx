@@ -11,7 +11,6 @@ export default function Home() {
           Pular para o conteúdo
         </span>
       </a>
-      <div className="background-grid" aria-hidden="true" />
       <Header />
       <Main />
       <Footer />

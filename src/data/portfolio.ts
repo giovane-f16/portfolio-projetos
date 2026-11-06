@@ -109,8 +109,8 @@ export const profile: PortfolioProfile = {
     pt: "São Paulo, Brasil",
   },
   summary: {
-    en: "I build and maintain secure, scalable digital products across backend, frontend, cloud, and mobile — with an engineering mindset focused on performance, maintainability, and user experience.",
-    pt: "Desenvolvo e mantenho produtos digitais seguros e escaláveis entre backend, frontend, cloud e mobile — com uma visão de engenharia focada em performance, manutenibilidade e experiência do usuário.",
+    en: "I’ve been coding since 2020. Today I build PHP systems, WordPress plugins, APIs, and mobile apps at Fundação Cásper Líbero.",
+    pt: "Programo desde 2020. Hoje faço sistemas em PHP, plugins WordPress, APIs e apps na Fundação Cásper Líbero.",
   },
   availability: {
     en: "Based in São Paulo · Working across web and mobile",
@@ -149,28 +149,28 @@ export const profile: PortfolioProfile = {
   capabilities: [
     {
       index: "01",
-      title: { en: "Product engineering", pt: "Engenharia de produto" },
+      title: { en: "Interfaces", pt: "Interfaces" },
       description: {
-        en: "Responsive web and mobile experiences translated from product requirements and design prototypes into maintainable interfaces.",
-        pt: "Experiências web e mobile responsivas, transformando requisitos e protótipos em interfaces fáceis de manter.",
+        en: "I turn prototypes into web and mobile screens that are easy to maintain.",
+        pt: "Transformo protótipos em telas web e mobile fáceis de manter.",
       },
       technologies: ["React", "Next.js", "TypeScript", "Angular", "Ionic"],
     },
     {
       index: "02",
-      title: { en: "Platforms & integrations", pt: "Plataformas e integrações" },
+      title: { en: "Back end", pt: "Back-end" },
       description: {
-        en: "Backend services, custom content platforms, REST APIs, and integrations designed for security and evolution.",
-        pt: "Serviços backend, plataformas de conteúdo, APIs REST e integrações projetadas para segurança e evolução.",
+        en: "I build APIs, WordPress plugins, and secure integrations.",
+        pt: "Faço APIs, plugins WordPress e integrações seguras.",
       },
-      technologies: ["PHP", "WordPress", "Python", "Node.js", "REST APIs"],
+      technologies: ["PHP", "WordPress", "Python", "Node.js", "MySQL", "PostgreSQL", "MongoDB"],
     },
     {
       index: "03",
-      title: { en: "Quality & delivery", pt: "Qualidade e entrega" },
+      title: { en: "Delivery", pt: "Entrega" },
       description: {
-        en: "Automated tests, monitoring, containers, and delivery workflows that make software more dependable in production.",
-        pt: "Testes automatizados, monitoramento, containers e fluxos de entrega para software mais confiável em produção.",
+        en: "I test, monitor, and ship with Docker and CI/CD.",
+        pt: "Testo, monitoro e publico com Docker e CI/CD.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
@@ -206,16 +206,16 @@ export const profile: PortfolioProfile = {
       location: { en: "São Paulo, Brazil", pt: "São Paulo, Brasil" },
       highlights: [
         {
-          en: "Develop and maintain PHP applications, custom WordPress plugins and themes, REST APIs, and web product features.",
-          pt: "Desenvolvimento e manutenção de aplicações PHP, plugins e temas WordPress, APIs REST e funcionalidades web.",
+          en: "I build PHP systems, WordPress plugins and themes, and REST APIs.",
+          pt: "Faço sistemas em PHP, plugins e temas WordPress e APIs REST.",
         },
         {
-          en: "Apply AI-assisted and spec-driven development workflows, automated unit and E2E testing, and application monitoring.",
-          pt: "Aplicação de fluxos de desenvolvimento assistido por IA e orientado a especificações, testes unitários e E2E e monitoramento.",
+          en: "I write unit and E2E tests and monitor apps in production.",
+          pt: "Escrevo testes unitários e E2E e monitoro as aplicações.",
         },
         {
-          en: "Build Docker images, automate internal workflows with Python, and deliver Ionic and Angular mobile applications to Google Play and the App Store.",
-          pt: "Criação de imagens Docker, automação de fluxos internos com Python e entrega de aplicativos Ionic e Angular na Google Play e App Store.",
+          en: "I ship Ionic and Angular apps to Google Play and the App Store.",
+          pt: "Publico apps Ionic e Angular na Google Play e na App Store.",
         },
       ],
     },
@@ -225,12 +225,12 @@ export const profile: PortfolioProfile = {
       period: { en: "Jul 2025 — Present", pt: "Jul 2025 — Atual" },
       highlights: [
         {
-          en: "Develop and maintain responsive pages with HTML, CSS, and JavaScript from design specifications and client requirements.",
-          pt: "Desenvolvimento e manutenção de páginas responsivas com HTML, CSS e JavaScript a partir de especificações e requisitos.",
+          en: "I turn layouts into responsive pages with HTML, CSS, and JavaScript.",
+          pt: "Transformo layouts em páginas responsivas com HTML, CSS e JavaScript.",
         },
         {
-          en: "Create email campaign templates and deliver frontend fixes and visual improvements across web projects.",
-          pt: "Criação de templates para campanhas de e-mail e entrega de correções frontend e melhorias visuais em projetos web.",
+          en: "I build email campaign templates and fix front-end issues.",
+          pt: "Monto templates de e-mail marketing e corrijo problemas de front-end.",
         },
       ],
     },
@@ -241,12 +241,12 @@ export const profile: PortfolioProfile = {
       location: { en: "São Paulo, Brazil", pt: "São Paulo, Brasil" },
       highlights: [
         {
-          en: "Supported internal systems, infrastructure, Windows and Mac labs, user access, networks, and employees across business units.",
-          pt: "Suporte a sistemas internos, infraestrutura, laboratórios Windows e Mac, acessos, redes e colaboradores das unidades de negócio.",
+          en: "I supported internal systems, networks, labs, and staff.",
+          pt: "Dei suporte a sistemas, redes, laboratórios e colaboradores.",
         },
         {
-          en: "Developed plugins for the TV Gazeta website and used Git for source code version control.",
-          pt: "Desenvolvimento de plugins para o site da TV Gazeta e uso de Git para controle de versão.",
+          en: "I built plugins for the TV Gazeta website.",
+          pt: "Fiz plugins para o site da TV Gazeta.",
         },
       ],
     },
@@ -316,6 +316,16 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Next.js", "AI"],
     url: "https://pos-tech-hackaton.vercel.app/",
+    image: {
+      src: "/projects/aprendia.webp",
+      alt: {
+        en: "Aprendia home page with areas for students and teachers.",
+        pt: "Página inicial do Aprendia, com áreas para alunos e professores.",
+      },
+      focalPoint: "50% 0%",
+      source: "https://pos-tech-hackaton.vercel.app/",
+      provisional: false,
+    },
     status: "online",
     sortOrder: 1,
   },
@@ -338,6 +348,16 @@ export const projects: Project[] = [
     ],
     technologies: ["Next.js", "React", "TypeScript"],
     url: "https://tech-challenge-fase-3.vercel.app/",
+    image: {
+      src: "/projects/tech-challenge-blogging.webp",
+      alt: {
+        en: "Blog home page listing recent posts.",
+        pt: "Página inicial do blog com a lista de posts recentes.",
+      },
+      focalPoint: "50% 0%",
+      source: "https://tech-challenge-fase-3.vercel.app/",
+      provisional: false,
+    },
     status: "online",
     sortOrder: 2,
   },
@@ -360,6 +380,16 @@ export const projects: Project[] = [
     ],
     technologies: ["TypeScript", "Node.js", "Swagger", "REST API"],
     url: "https://tech-challenge-fase-2-54i9.onrender.com/",
+    image: {
+      src: "/projects/api-rest-node-js.webp",
+      alt: {
+        en: "Swagger documentation of the API showing the posts endpoints.",
+        pt: "Documentação Swagger da API com as rotas de posts.",
+      },
+      focalPoint: "50% 0%",
+      source: "https://tech-challenge-fase-2-54i9.onrender.com/",
+      provisional: false,
+    },
     status: "online",
     sortOrder: 3,
   },
@@ -406,6 +436,16 @@ export const projects: Project[] = [
     ],
     technologies: ["WordPress", "PHP", "OOP"],
     url: "https://fcl.com.br/",
+    image: {
+      src: "/projects/fundacao-casper-libero.webp",
+      alt: {
+        en: "Fundação Cásper Líbero website home page.",
+        pt: "Página inicial do site da Fundação Cásper Líbero.",
+      },
+      focalPoint: "50% 0%",
+      source: "https://fcl.com.br/",
+      provisional: false,
+    },
     status: "online",
     sortOrder: 5,
   },

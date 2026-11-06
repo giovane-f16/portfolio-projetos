@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { LocalizedText } from "@/data/portfolio";
 
 function Copy({ text }: { text: LocalizedText }) {
@@ -16,26 +17,13 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-inner shell">
         <div className="footer-brand">
-          <span aria-hidden="true">GF</span>
-          <div>
-            <strong translate="no">Giovane Ferreira</strong>
-            <small>
-              <Copy text={{ en: "Full Stack Developer", pt: "Desenvolvedor Full Stack" }} />
-            </small>
-          </div>
+          <Image src="/logo.svg" alt="" width={32} height={32} unoptimized />
+          <strong translate="no">Giovane Ferreira</strong>
         </div>
         <p>
-          <Copy
-            text={{
-              en: "Designed and engineered in São Paulo, Brazil.",
-              pt: "Projetado e desenvolvido em São Paulo, Brasil.",
-            }}
-          />
+          <Copy text={{ en: "Made by me in São Paulo.", pt: "Feito por mim, em São Paulo." }} />
         </p>
-        <p>
-          © Giovane Ferreira ·{" "}
-          <Copy text={{ en: "All rights reserved.", pt: "Todos os direitos reservados." }} />
-        </p>
+        <p>© Giovane Ferreira</p>
       </div>
     </footer>
   );

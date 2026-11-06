@@ -1,4 +1,4 @@
-# Corporate portfolio design specification
+# Portfolio design specification
 
 ## Product goal
 
@@ -49,61 +49,38 @@ sources.
 
 ## Information architecture
 
-1. Fixed header with professional brand, section navigation, EN/PT switch, and
-   accessible mobile menu.
-2. Profile hero with positioning statement, experience action, verified metrics,
-   and an executive profile card.
-3. Expertise with three delivery capabilities and a technology directory.
-4. Experience with a chronological work history and a credential panel.
-5. Selected work displayed as case-oriented project cards.
-6. Contact banner with the configured channel and professional networks.
-7. Compact corporate footer.
+1. Fixed header with the GF signature logo, section navigation, EN/PT switch,
+   and accessible mobile menu.
+2. Red hero block with a first-person greeting, a short summary, two actions,
+   the GF signature in large scale, and the current role.
+3. Projects in an endless horizontal carousel with a screenshot per project;
+   it pauses on hover, focus, or its toggle and becomes a static scroll row with
+   reduced motion.
+4. Skills in a dark block with three areas and their tools.
+5. Experience as a dated job list beside a credentials panel.
+6. Red contact block with the configured channel and GitHub.
+7. Compact footer with the GF signature.
 
 Internal section navigation uses buttons and smooth scrolling. It must not add
 hash fragments or other navigation state to the browser URL.
 
-## Visual direction: corporate engineering
+## Visual direction: red blocks
 
-The interface combines the confidence of an enterprise profile with the detail
-of an engineering dossier.
+The page reads as a sequence of solid blocks on a light paper ground.
 
-- Deep navy is the primary canvas.
-- Institutional blue indicates actions, navigation, and structure.
-- Warm off-white surfaces give credentials and cases a document-like quality.
-- Mint is reserved for verified/live states.
-- Typography uses self-hosted Inter through `next/font`, with a neutral system
-  fallback and high contrast.
-- Thin borders, consistent radii, and restrained elevation create hierarchy.
-- The layout avoids decorative dashboards, stock imagery, and simulated code
-  terminals.
-
-### Core tokens
-
-```css
-:root {
-  --navy-950: #07111f;
-  --navy-900: #0b1728;
-  --navy-850: #0f1d31;
-  --navy-800: #14253c;
-  --blue-500: #4f8ff7;
-  --blue-400: #73a7fa;
-  --blue-200: #bed5fb;
-  --mint-400: #78d8bd;
-  --sand-100: #f6f3ec;
-  --slate-50: #f2f5f8;
-  --ink-900: #101b2a;
-  --shell: 1180px;
-  --header-height: 76px;
-}
-```
+- Paper (`--paper-100`) is the page ground; white-ish surfaces hold cards.
+- Red (`--red-600`) fills the hero and contact blocks and marks accents.
+- Warm ink (`--ink-900`) fills the skills block and sets text.
+- Green and amber are reserved for project status.
+- The GF signature logo is the brand mark; it is recolored by CSS, never edited.
+- Copy is first person, short, and uses only facts from the sources above.
 
 ### Typography
 
-- Display: Inter/system sans, weight 800–900.
-- Body: Inter/system sans, regular and semibold.
-- Metadata: system monospace for dates, indexes, and compact labels.
-- Hero title: `clamp(3.4rem, 6.6vw, 6.15rem)`.
-- Section titles: `clamp(2.45rem, 5vw, 4.45rem)`.
+- Display: Archivo at an expanded width, weight 800.
+- Body: Instrument Sans.
+- Metadata: JetBrains Mono for dates, kickers, and tags.
+- All three are self-hosted through `next/font`.
 - Headings use balanced wrapping to reduce isolated words.
 
 ## Bilingual behavior
@@ -120,11 +97,10 @@ of an engineering dossier.
 
 ## Responsive behavior
 
-- Above 1050 px: full navigation, two-column hero, three capability cards.
-- 861–1050 px: compact brand and responsive content columns.
-- 768–860 px: stacked hero, horizontal profile card, single-column capabilities.
-- Below 768 px: accessible menu, single-column cases and metrics.
-- Below 520 px: full-width actions and simplified timeline/card metadata.
+- Above 1050 px: full navigation, hero copy beside the signature, three skill columns.
+- Up to 1050 px: compact brand, single-column skills and experience.
+- Below 768 px: accessible menu, signature above the hero copy, stacked jobs.
+- Below 520 px: full-width actions.
 - Full-bleed fixed navigation accounts for device safe areas.
 
 Manual review targets: 320, 768, 1024, and 1440 px.
@@ -148,7 +124,6 @@ Manual review targets: 320, 768, 1024, and 1440 px.
 - Only `Header` hydrates for language, navigation, menu, and reveal behavior.
 - Static data stays in `src/data/portfolio.ts` and requires no runtime fetch.
 - No visual framework, icon package, analytics, or third-party script is loaded.
-- Sections below the fold use `content-visibility`.
 - Scroll layout reads are batched in `requestAnimationFrame`.
 - The language choice causes a layout recalculation without re-rendering the
   full content tree.

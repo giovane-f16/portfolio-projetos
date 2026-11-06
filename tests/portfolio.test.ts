@@ -203,6 +203,15 @@ describe("resume-backed portfolio content", () => {
     expect(projects.map((project) => project.sortOrder)).toEqual([1, 2, 3, 4, 5]);
   });
 
+  it("gives every online project a local thumbnail", () => {
+    const onlineProjects = projects.filter((project) => project.status === "online");
+
+    onlineProjects.forEach((project) => {
+      expect(project.image?.src).toBe(`/projects/${project.slug}.webp`);
+      expect(() => readProjectFile(`public${project.image?.src}`)).not.toThrow();
+    });
+  });
+
   it("never exposes a broken or insecure project action", () => {
     const offlineProjects = projects.filter((project) => project.status !== "online");
     const onlineProjects = projects.filter((project) => project.status === "online");
@@ -431,7 +440,7 @@ describe("bilingual corporate interface", () => {
     expect(experienceButton?.getAttribute("aria-current")).toBe("location");
     expect(
       screen
-        .getByText("Expertise")
+        .getByText("Skills")
         .closest("button")
         ?.getAttribute("aria-current"),
     ).toBeNull();
@@ -502,9 +511,11 @@ describe("bilingual corporate interface", () => {
     const designSystem = readProjectFile("src/app/design-system.css");
     const styles = `${designSystem}\n${globalStyles}`;
 
-    expect(styles).toContain("--navy-950: #07111f");
-    expect(styles).toContain("--blue-500: #4f8ff7");
-    expect(styles).toContain("--sand-100: #f6f3ec");
+    expect(styles).toContain("--red-600: #b5122c");
+    expect(styles).toContain("--paper-100: #f3efed");
+    expect(styles).toContain("--ink-900: #1c1416");
+    expect(styles).toContain("--color-block-brand: var(--red-600)");
+    expect(styles).not.toMatch(/--navy-|--blue-/);
     expect(styles).toMatch(/body\s*{[\s\S]*?background:/);
     expect(styles).toMatch(/\.project-card h3\s*{[\s\S]*?color:/);
     expect(styles).toMatch(/\.project-summary\s*{[\s\S]*?color:/);
@@ -517,7 +528,7 @@ describe("bilingual corporate interface", () => {
     expect(styles).not.toMatch(/\.locale-switch(?: button)?\s*{[^}]*border-radius:/);
     expect(styles).not.toContain("min-width: 34px");
     expect(globalStyles.split("\n").length).toBeLessThan(800);
-    expect(designSystem).toContain("--font-display: var(--font-inter, Inter)");
+    expect(designSystem).toContain("--font-display: var(--font-archivo, Archivo)");
     expect(designSystem).toContain("--text-nav: 0.9375rem");
     expect(globalStyles).toMatch(
       /\.site-navigation button\s*{[\s\S]*?font-size:\s*var\(--text-nav\)/,
@@ -525,11 +536,12 @@ describe("bilingual corporate interface", () => {
     const layout = readProjectFile("src/app/layout.tsx");
 
     expect(layout).toContain(
-      'import { Inter } from "next/font/google"',
+      'import { Archivo, Instrument_Sans, JetBrains_Mono } from "next/font/google"',
     );
     expect(layout).toMatch(
-      /<html[\s\S]*?className=\{inter\.variable\}[\s\S]*?<body>/,
+      /<html[\s\S]*?className=\{fontVariables\}[\s\S]*?<body>/,
     );
+    expect(layout).toContain('colorScheme: "light"');
   });
 
   it("ships a branded application favicon", () => {
@@ -540,7 +552,7 @@ describe("bilingual corporate interface", () => {
 
     expect(icon).toContain('viewBox="68 35 1177 1186"');
     expect(icon).toContain('aria-label="Logo GF de Giovane Ferreira"');
-    expect(icon).toContain('fill="#07111fe8"');
+    expect(icon).toContain('fill="#b5122c"');
     expect(icon).toContain("path { fill: #ffffff; }");
     expect(iconPath).toBe(brandPath);
   });
@@ -551,6 +563,19 @@ describe("bilingual corporate interface", () => {
       .sort();
 
     expect(componentNames).toEqual(["Footer.tsx", "Header.tsx", "Main.tsx"]);
+  });
+
+  it("loops the project carousel and stops it for reduced motion", () => {
+    const main = readProjectFile("src/components/Main.tsx");
+    const styles = readProjectFile("src/app/globals.css");
+
+    expect(main).toContain('className="carousel-group" aria-hidden="true" inert');
+    expect(main).toContain('className="carousel-toggle"');
+    expect(styles).toMatch(/@keyframes carousel-scroll\s*{\s*to\s*{\s*transform:\s*translateX\(-50%\)/);
+    expect(styles).toContain(".project-carousel:has(.carousel-toggle:checked) .carousel-track");
+    expect(styles).toMatch(
+      /@media \(prefers-reduced-motion: reduce\)\s*{\s*\.carousel-track, \.hero-signature\s*{\s*animation:\s*none;/,
+    );
   });
 
   it("provides progressive reveals and reduced-motion support", () => {
