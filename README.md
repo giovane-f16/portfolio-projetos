@@ -12,7 +12,7 @@ continuam baseados em `Projects.md`. A especificação ativa está em
 
 ## Executar localmente
 
-Requisitos: Node.js 20.19 ou superior e npm.
+Requisitos: Node.js 22.12 ou superior e npm.
 
 ```bash
 npm install
