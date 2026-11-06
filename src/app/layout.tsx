@@ -24,12 +24,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 const fontVariables = `${archivo.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`;
 
-const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='pt'){root.dataset.locale='pt';root.lang='pt-BR'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
+const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='en'){root.dataset.locale='en';root.lang='en'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
 export const metadata: Metadata = {
   title: "Giovane Ferreira",
   description:
-    "Portfolio of Giovane Ferreira, a Product Engineer in São Paulo working across web, backend, cloud, and mobile products.",
+    "Portfólio de Giovane Ferreira, Product Engineer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   authors: [{ name: "Giovane Ferreira da Silva" }],
   creator: "Giovane Ferreira da Silva",
   category: "technology",
@@ -57,7 +57,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-locale="en" className={fontVariables} suppressHydrationWarning>
+    <html lang="pt-BR" data-locale="pt" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: interfaceBootstrap }} />
       </head>

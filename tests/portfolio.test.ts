@@ -245,10 +245,11 @@ describe("resume-backed portfolio content", () => {
 });
 
 describe("bilingual corporate interface", () => {
-  it("uses English as the server-rendered default and remembers Portuguese", () => {
+  it("uses Portuguese as the server-rendered default and remembers English", () => {
     const layout = readProjectFile("src/app/layout.tsx");
 
-    expect(layout).toContain('<html lang="en" data-locale="en"');
+    expect(layout).toContain('<html lang="pt-BR" data-locale="pt"');
+    expect(layout).toContain("saved==='en'");
     expect(layout).toContain("portfolio-locale");
   });
 

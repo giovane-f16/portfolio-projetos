@@ -138,11 +138,11 @@ export function applyLocale(locale: Locale) {
 }
 
 function getLocaleSnapshot(): Locale {
-  return document.documentElement.dataset.locale === "pt" ? "pt" : "en";
+  return document.documentElement.dataset.locale === "en" ? "en" : "pt";
 }
 
 function getServerLocaleSnapshot(): Locale {
-  return "en";
+  return "pt";
 }
 
 function subscribeToLocaleChange(onStoreChange: () => void) {
