@@ -135,7 +135,7 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
 .hero h1, .section-heading h2, .skill-card h3, .job h3, .contact-block h2 {
   font-family: var(--font-display); font-stretch: var(--width-display); font-weight: var(--weight-black); text-wrap: balance;
 }
-.hero-eyebrow, .section-kicker, .job-period, .project-period, .credential-group h3, .hero-now-label {
+.hero-eyebrow, .section-kicker, .job-period, .project-period, .credential-group h3 {
   font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase;
 }
 .button {
@@ -204,15 +204,36 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
 @keyframes signature-in {
   from { opacity: 0; transform: translateY(16px) rotate(-6deg) scale(0.94); }
 }
+.hero-enter {
+  animation: hero-rise 700ms var(--ease-reveal) var(--enter-delay, 0ms) both;
+}
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+}
+.hero-title-line {
+  display: inline-block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; vertical-align: top;
+}
+.hero-title-line > span {
+  display: inline-block; animation: title-line-in 900ms var(--ease-reveal) var(--enter-delay, 0ms) both;
+}
+@keyframes title-line-in {
+  from { transform: translateY(105%); }
+}
+.site-header {
+  animation: header-drop 600ms var(--ease-reveal) both;
+}
+@keyframes header-drop {
+  from { opacity: 0; transform: translateY(-100%); }
+}
+.hero-actions .button-light span[aria-hidden] {
+  display: inline-block; animation: arrow-nudge 1.4s ease-in-out 1.4s 2;
+}
+@keyframes arrow-nudge {
+  50% { transform: translateY(4px); }
+}
 .hero-now {
   grid-area: now; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px;
   margin-top: clamp(48px, 7vw, 88px); padding-top: 22px; border-top: 1px solid var(--color-border-inverse);
-}
-.hero-now p {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin: 0; font-weight: var(--weight-semibold);
-}
-.hero-now-label {
-  padding: 3px 10px; border-radius: var(--radius-pill); background: var(--color-block-brand-deep);
 }
 .hero-links {
   display: flex; gap: 22px; font-weight: var(--weight-semibold);

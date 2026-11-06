@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import {
   profile,
   projectStatusLabels,
@@ -203,24 +203,29 @@ function ProjectCarousel() {
 
 export function Main() {
   const contactUrl = resolveContactUrl();
-  const currentJob = profile.experiences[0];
 
   return (
     <main id="conteudo" tabIndex={-1}>
       <section className="hero-block" id="sobre" aria-labelledby="hero-title">
         <div className="hero shell">
-          <div className="hero-copy" data-reveal>
-            <p className="hero-eyebrow">
+          <div className="hero-copy">
+            <p className="hero-eyebrow hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>
               <Copy text={profile.role} /> <span aria-hidden="true">·</span>{" "}
               <Copy text={profile.location} />
             </p>
-            <h1 id="hero-title">
-              <Copy text={{ en: "Hi, I’m Giovane.", pt: "Oi, eu sou Giovane." }} />
+            <h1 id="hero-title" translate="no">
+              <span className="hero-title-line">
+                <span style={{ "--enter-delay": "180ms" } as CSSProperties}>Giovane</span>
+              </span>
+              <br />
+              <span className="hero-title-line">
+                <span style={{ "--enter-delay": "300ms" } as CSSProperties}>Ferreira</span>
+              </span>
             </h1>
-            <p className="hero-summary">
+            <p className="hero-summary hero-enter" style={{ "--enter-delay": "480ms" } as CSSProperties}>
               <Copy text={profile.summary} />
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions hero-enter" style={{ "--enter-delay": "600ms" } as CSSProperties}>
               <button className="button button-light" data-scroll-to="projetos">
                 <Copy text={{ en: "See my projects", pt: "Ver meus projetos" }} />
                 <span aria-hidden="true">↓</span>
@@ -235,13 +240,7 @@ export function Main() {
             <Image src="/logo.svg" alt="" width={360} height={363} unoptimized priority />
           </div>
 
-          <div className="hero-now" data-reveal>
-            <p>
-              <span className="hero-now-label">
-                <Copy text={{ en: "Now", pt: "Agora" }} />
-              </span>
-              <Copy text={currentJob.role} /> · <span translate="no">{currentJob.organization}</span>
-            </p>
+          <div className="hero-now hero-enter" style={{ "--enter-delay": "760ms" } as CSSProperties}>
             <div className="hero-links">
               {profile.socialLinks.map((link) => (
                 <ExternalLink href={link.href} key={link.label}>

@@ -73,8 +73,8 @@ describe("resume-backed portfolio content", () => {
     expect(profile.name).toBe("Giovane Ferreira da Silva");
     expect(profile.professionalName).toBe("Giovane Ferreira");
     expect(profile.role).toEqual({
-      en: "Full Stack Developer",
-      pt: "Desenvolvedor Full Stack",
+      en: "Product Engineer",
+      pt: "Product Engineer",
     });
     expect(profile.location).toEqual({
       en: "São Paulo, Brazil",
@@ -192,15 +192,21 @@ describe("resume-backed portfolio content", () => {
     );
   });
 
-  it("keeps the five documented projects in their source order", () => {
+  it("keeps the LinkedIn projects in their source order", () => {
     expect(projects.map((project) => project.title)).toEqual([
+      "São Silvestre 2026",
+      "Troféu Mesa Redonda 2026",
+      "Navero",
+      "Prova 9 de Julho 2026",
+      "Gazeta Super Ofertas",
+      "App TV Gazeta",
       "Aprendia",
       "Tech Challenge Fase 3 — Blogging",
       "API REST Node.js",
       "Equilíbrio Financeiro",
       "Fundação Cásper Líbero",
     ]);
-    expect(projects.map((project) => project.sortOrder)).toEqual([1, 2, 3, 4, 5]);
+    expect(projects.map((project) => project.sortOrder)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
   });
 
   it("gives every online project a local thumbnail", () => {

@@ -34,12 +34,12 @@ const pageMetadata: Record<Locale, { title: string; description: string }> = {
   en: {
     title: "Giovane Ferreira",
     description:
-      "Portfolio of Giovane Ferreira, a Full Stack Developer in São Paulo working across web, backend, cloud, and mobile products.",
+      "Portfolio of Giovane Ferreira, a Product Engineer in São Paulo working across web, backend, cloud, and mobile products.",
   },
   pt: {
     title: "Giovane Ferreira",
     description:
-      "Portfólio de Giovane Ferreira, Desenvolvedor Full Stack em São Paulo com atuação em produtos web, backend, cloud e mobile.",
+      "Portfólio de Giovane Ferreira, Product Engineer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   },
 };
 
@@ -429,7 +429,7 @@ export function Header() {
           <span className="brand-copy">
             <strong translate="no">Giovane Ferreira</strong>
             <small>
-              <Copy text={{ en: "Full Stack Developer", pt: "Desenvolvedor Full Stack" }} />
+              <Copy text={{ en: "Product Engineer", pt: "Product Engineer" }} />
             </small>
           </span>
         </button>
