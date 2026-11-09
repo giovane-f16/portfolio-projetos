@@ -169,8 +169,8 @@ export const profile: PortfolioProfile = {
       index: "03",
       title: { en: "Publishing", pt: "Publicação" },
       description: {
-        en: "I host applications on different cloud services, ensuring availability, security, and performance.",
-        pt: "Hospedo as aplicações em diferentes serviços de cloud, garantindo disponibilidade, segurança e performance.",
+        en: "I host applications on different cloud services, ensuring availability,\nsecurity, and performance.",
+        pt: "Hospedo as aplicações em diferentes serviços de cloud, garantindo disponibilidade,\nsegurança e performance.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
