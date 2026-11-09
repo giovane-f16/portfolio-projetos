@@ -548,7 +548,7 @@ describe("bilingual corporate interface", () => {
     expect(layout).toMatch(
       /<html[\s\S]*?className=\{fontVariables\}[\s\S]*?<body>/,
     );
-    expect(layout).toContain('colorScheme: "light"');
+    expect(layout).toContain('colorScheme: "dark"');
   });
 
   it("ships a branded application favicon", () => {
