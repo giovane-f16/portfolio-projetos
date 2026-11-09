@@ -468,11 +468,8 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding-block: 28px;
   color: var(--color-text-subtle); font-size: var(--text-sm);
 }
-.footer-brand {
-  display: flex; align-items: center; gap: 12px; color: var(--color-text);
-}
-.footer-brand img {
-  filter: brightness(0);
+.footer-logo {
+  filter: brightness(0) invert(1);
 }
 .footer-inner p {
   margin: 0;
