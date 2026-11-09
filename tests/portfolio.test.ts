@@ -100,7 +100,7 @@ describe("resume-backed portfolio content", () => {
       {
         organization: "Mandem Jobs — Design Studio",
         role: "Full Stack Developer · Freelance",
-        period: "Jul 2025 — Present",
+        period: "Jul 2025 — Sep 2025",
       },
       {
         organization: "Fundação Cásper Líbero",

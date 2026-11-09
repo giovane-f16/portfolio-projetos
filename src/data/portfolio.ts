@@ -220,15 +220,15 @@ export const profile: PortfolioProfile = {
     {
       organization: "Mandem Jobs — Design Studio",
       role: { en: "Full Stack Developer · Freelance", pt: "Desenvolvedor Full Stack · Freelancer" },
-      period: { en: "Jul 2025 — Present", pt: "Jul 2025 — Atual" },
+      period: { en: "Jul 2025 — Sep 2025", pt: "Jul 2025 — Set 2025" },
       highlights: [
         {
-          en: "I turn layouts into responsive pages with HTML, CSS, and JavaScript.",
-          pt: "Transformo layouts em páginas responsivas com HTML, CSS e JavaScript.",
+          en: "I turned layouts into responsive pages with HTML, CSS, and JavaScript.",
+          pt: "Transformei layouts em páginas responsivas com HTML, CSS e JavaScript.",
         },
         {
-          en: "I build email campaign templates and fix front-end issues.",
-          pt: "Monto templates de e-mail marketing e corrijo problemas de front-end.",
+          en: "I built email campaign templates and fixed front-end issues.",
+          pt: "Montei templates de e-mail marketing e corrigi problemas de front-end.",
         },
       ],
     },
