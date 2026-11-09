@@ -26,10 +26,26 @@ const fontVariables = `${archivo.variable} ${instrumentSans.variable} ${jetbrain
 
 const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='en'){root.dataset.locale='en';root.lang='en'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
+const siteTitle = "Giovane Ferreira - Full Stack Developer";
+const siteDescription =
+  "Portfólio de Giovane Ferreira, Full Stack Developer em São Paulo com atuação em produtos web, backend, cloud e mobile.";
+
 export const metadata: Metadata = {
-  title: "Giovane Ferreira - Full Stack Developer",
-  description:
-    "Portfólio de Giovane Ferreira, Full Stack Developer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    alternateLocale: ["en_US"],
+    siteName: "Giovane Ferreira",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
   authors: [{ name: "Giovane Ferreira da Silva" }],
   creator: "Giovane Ferreira da Silva",
   category: "technology",

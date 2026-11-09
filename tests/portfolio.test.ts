@@ -285,7 +285,7 @@ describe("bilingual corporate interface", () => {
       applyLocale("pt");
 
       expect(root).toEqual({ dataset: { locale: "pt" }, lang: "pt-BR" });
-      expect(fakeDocument.title).toBe("Giovane Ferreira");
+      expect(fakeDocument.title).toBe("Giovane Ferreira - Full Stack Developer");
       expect(metadata.setAttribute).toHaveBeenCalledWith(
         "content",
         expect.stringContaining("Portfólio de Giovane Ferreira"),

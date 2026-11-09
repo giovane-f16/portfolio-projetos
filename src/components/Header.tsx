@@ -32,12 +32,12 @@ const scrollInterruptionKeys = new Set([
 
 const pageMetadata: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: "Giovane Ferreira",
+    title: "Giovane Ferreira - Full Stack Developer",
     description:
       "Portfolio of Giovane Ferreira, a Full Stack Developer in São Paulo working across web, backend, cloud, and mobile products.",
   },
   pt: {
-    title: "Giovane Ferreira",
+    title: "Giovane Ferreira - Full Stack Developer",
     description:
       "Portfólio de Giovane Ferreira, Full Stack Developer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   },
