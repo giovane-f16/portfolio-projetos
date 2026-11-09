@@ -278,7 +278,7 @@ export const profile: PortfolioProfile = {
   languages: [
     {
       name: { en: "Portuguese", pt: "Português" },
-      proficiency: { en: "Native or bilingual", pt: "Nativo" },
+      proficiency: { en: "Native", pt: "Nativo" },
     },
     {
       name: { en: "English", pt: "Inglês" },

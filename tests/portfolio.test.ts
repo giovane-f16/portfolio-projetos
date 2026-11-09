@@ -117,7 +117,7 @@ describe("resume-backed portfolio content", () => {
       "Centro Universitário Senac",
     ]);
     expect(profile.languages.map((item) => item.proficiency.en)).toEqual([
-      "Native or bilingual",
+      "Native",
       "Full professional proficiency",
     ]);
     expect(profile.certifications.map((item) => item.en)).toEqual([
