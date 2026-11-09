@@ -149,21 +149,21 @@ export const profile: PortfolioProfile = {
   capabilities: [
     {
       index: "01",
-      title: { en: "Interfaces", pt: "Interfaces" },
+      title: { en: "Web applications", pt: "Aplicações Web" },
       description: {
-        en: "I turn prototypes into web and mobile screens that are easy to maintain.",
-        pt: "Transformo protótipos em telas web e mobile fáceis de manter.",
+        en: "I build complete websites, from landing pages to full systems with integrations.",
+        pt: "Construo sites completos, desde landing pages a sistemas completos com integrações.",
       },
-      technologies: ["React", "Next.js", "TypeScript", "Angular", "Ionic"],
+      technologies: ["React", "Next.js", "TypeScript", "WordPress", "PHP"],
     },
     {
       index: "02",
-      title: { en: "Back end", pt: "Back-end" },
+      title: { en: "Mobile apps", pt: "Aplicativos móveis" },
       description: {
-        en: "I build APIs, WordPress plugins, and secure integrations.",
-        pt: "Faço APIs, plugins WordPress e integrações seguras.",
+        en: "I build mobile apps compatible with iOS and Android devices.",
+        pt: "Crio aplicativos móveis com compatibilidade para dispositivos iOS e Android.",
       },
-      technologies: ["PHP", "WordPress", "Python", "Node.js", "MySQL", "PostgreSQL", "MongoDB"],
+      technologies: ["Ionic", "Angular", "TypeScript", "iOS", "Android"],
     },
     {
       index: "03",
@@ -332,8 +332,8 @@ export const projects: Project[] = [
     period: { en: "Oct 2026", pt: "Out 2026" },
     association: "Fundação Cásper Líbero",
     summary: {
-      en: "Voting system for the trophy, rebuilt on FCL's standard project template.",
-      pt: "Sistema de votação do troféu, refeito sobre o modelo de projeto padrão da FCL.",
+      en: "Rebuilt the Troféu Mesa Redonda system, ensuring the integrity and persistence of the complete voting data.",
+      pt: "Refeito o sistema do Troféu Mesa Redonda, garantindo integridade e persistência dos dados completos da votação.",
     },
     outcomes: [
       { en: "Google sign-in and bot protection.", pt: "Login com Google e proteção contra robôs." },
