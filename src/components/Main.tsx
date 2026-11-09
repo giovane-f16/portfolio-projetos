@@ -260,8 +260,8 @@ export function Main() {
             kicker={{ en: "Projects", pt: "Projetos" }}
             title={{ en: "What I’ve built", pt: "O que eu construí" }}
             intro={{
-              en: "School projects, client work, and sites in production.",
-              pt: "Projetos da pós, trabalhos para clientes e sites em produção.",
+              en: "Projects in general, client work, and sites in production.",
+              pt: "Projetos em geral, trabalhos para clientes e sites em produção.",
             }}
           />
         </div>

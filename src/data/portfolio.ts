@@ -304,8 +304,8 @@ export const projects: Project[] = [
     period: { en: "Aug 2026 — Oct 2026", pt: "Ago 2026 — Out 2026" },
     association: "Fundação Cásper Líbero",
     summary: {
-      en: "Relaunch of the site for Gazeta's biggest street race. I led it from prototype to go-live.",
-      pt: "Relançamento do site da maior corrida de rua da Gazeta. Conduzi do protótipo à virada em produção.",
+      en: "Relaunch of the site for the biggest street race in Latin America. I led it from prototype to go-live.",
+      pt: "Relançamento do site da maior corrida de rua da América Latina. Conduzi do protótipo à virada em produção.",
     },
     outcomes: [
       { en: "Formal spec written before any code.", pt: "Especificação formal escrita antes do código." },
@@ -604,7 +604,7 @@ export const projects: Project[] = [
     association: "Fundação Cásper Líbero",
     summary: {
       en: "A custom institutional WordPress theme engineered across frontend and backend for performance, SEO, and maintainability.",
-      pt: "Tema WordPress institucional desenvolvido no frontend e backend com foco em performance, SEO e manutenibilidade.",
+      pt: "Tema WordPress institucional desenvolvido o frontend e o backend com foco em performance, SEO e manutenibilidade.",
     },
     problem: {
       en: "Modernize the technical foundation and user experience of the institutional website.",
