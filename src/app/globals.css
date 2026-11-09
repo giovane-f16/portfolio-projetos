@@ -280,9 +280,12 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
   position: relative; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .carousel-track {
-  display: flex; width: max-content; animation: carousel-scroll 55s linear infinite;
+  display: flex; width: max-content; animation: carousel-scroll 55s linear infinite; cursor: grab; touch-action: pan-y;
 }
-.project-carousel:hover .carousel-track, .project-carousel:focus-within .carousel-track, .project-carousel:has(.carousel-toggle:checked) .carousel-track {
+.carousel-track.is-dragging {
+  cursor: grabbing; user-select: none;
+}
+.carousel-track.is-dragging, .carousel-track:has(.project-card:hover), .project-carousel:focus-within .carousel-track, .project-carousel:has(.carousel-toggle:checked) .carousel-track {
   animation-play-state: paused;
 }
 @keyframes carousel-scroll {

@@ -17,6 +17,7 @@ import {
   Header,
   resolveActiveSection,
 } from "../src/components/Header";
+import { CarouselTrack } from "../src/components/CarouselTrack";
 import {
   profile,
   projectStatusLabels,
@@ -564,12 +565,17 @@ describe("bilingual corporate interface", () => {
     expect(iconPath).toBe(brandPath);
   });
 
-  it("keeps only the three focused presentation components", () => {
+  it("keeps only the focused presentation components", () => {
     const componentNames = readdirSync(resolve(projectRoot, "src/components"))
       .filter((file) => file.endsWith(".tsx"))
       .sort();
 
-    expect(componentNames).toEqual(["Footer.tsx", "Header.tsx", "Main.tsx"]);
+    expect(componentNames).toEqual([
+      "CarouselTrack.tsx",
+      "Footer.tsx",
+      "Header.tsx",
+      "Main.tsx",
+    ]);
   });
 
   it("loops the project carousel and stops it for reduced motion", () => {
@@ -597,5 +603,72 @@ describe("bilingual corporate interface", () => {
     expect(layout).toContain("window.setTimeout");
     expect(styles).toContain(".reveal-enabled [data-reveal]");
     expect(styles).toContain("@media (prefers-reduced-motion: reduce)");
+  });
+});
+
+describe("draggable project carousel", () => {
+  afterEach(() => {
+    cleanup();
+    vi.restoreAllMocks();
+  });
+
+  function renderTrack() {
+    const animation = {
+      currentTime: 10_000,
+      effect: { getComputedTiming: () => ({ duration: 55_000 }) },
+    };
+    const onLinkClick = vi.fn();
+
+    render(
+      createElement(
+        CarouselTrack,
+        null,
+        createElement("a", { href: "#projeto", onClick: onLinkClick }, "Ver projeto"),
+      ),
+    );
+
+    const track = document.querySelector<HTMLDivElement>(".carousel-track")!;
+    Object.defineProperty(track, "offsetWidth", { value: 2000 });
+    Object.defineProperty(track, "getAnimations", { value: () => [animation] });
+
+    return { animation, onLinkClick, track };
+  }
+
+  it("moves the loop backwards when dragged to the right and wraps around", () => {
+    const { animation, track } = renderTrack();
+
+    fireEvent.pointerDown(track, { pointerId: 1, pointerType: "mouse", button: 0, clientX: 100 });
+    fireEvent.pointerMove(track, { pointerId: 1, pointerType: "mouse", buttons: 1, clientX: 200 });
+
+    expect(track.classList.contains("is-dragging")).toBe(true);
+    expect(animation.currentTime).toBeCloseTo(10_000 - (100 / 1000) * 55_000);
+
+    fireEvent.pointerMove(track, { pointerId: 1, pointerType: "mouse", buttons: 1, clientX: 400 });
+
+    expect(animation.currentTime).toBeCloseTo(55_000 + 10_000 - (300 / 1000) * 55_000);
+
+    fireEvent.pointerUp(track, { pointerId: 1, pointerType: "mouse" });
+
+    expect(track.classList.contains("is-dragging")).toBe(false);
+  });
+
+  it("blocks the link click that ends a drag but keeps plain clicks working", () => {
+    const { animation, onLinkClick, track } = renderTrack();
+    const link = screen.getByText("Ver projeto");
+
+    fireEvent.pointerDown(track, { pointerId: 1, pointerType: "mouse", button: 0, clientX: 100 });
+    fireEvent.pointerMove(track, { pointerId: 1, pointerType: "mouse", buttons: 1, clientX: 60 });
+    fireEvent.pointerUp(track, { pointerId: 1, pointerType: "mouse" });
+    fireEvent.click(link);
+
+    expect(onLinkClick).not.toHaveBeenCalled();
+
+    fireEvent.pointerDown(track, { pointerId: 2, pointerType: "mouse", button: 0, clientX: 100 });
+    fireEvent.pointerMove(track, { pointerId: 2, pointerType: "mouse", buttons: 1, clientX: 103 });
+    fireEvent.pointerUp(track, { pointerId: 2, pointerType: "mouse" });
+    fireEvent.click(link);
+
+    expect(onLinkClick).toHaveBeenCalledTimes(1);
+    expect(animation.currentTime).toBeCloseTo(10_000 + (40 / 1000) * 55_000);
   });
 });

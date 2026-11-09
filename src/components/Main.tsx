@@ -7,6 +7,7 @@ import {
   type LocalizedText,
   type Project,
 } from "@/data/portfolio";
+import { CarouselTrack } from "./CarouselTrack";
 
 const linkedInUrl =
   profile.socialLinks.find((link) => link.label === "LinkedIn")?.href ??
@@ -180,7 +181,7 @@ function ProjectCarousel() {
         <Copy text={{ en: "Pause animation", pt: "Pausar animação" }} />
       </label>
       <div className="carousel-viewport">
-        <div className="carousel-track">
+        <CarouselTrack>
           <ul className="carousel-group">
             {projects.map((project) => (
               <li key={project.id}>
@@ -195,7 +196,7 @@ function ProjectCarousel() {
               </li>
             ))}
           </ul>
-        </div>
+        </CarouselTrack>
       </div>
     </div>
   );
