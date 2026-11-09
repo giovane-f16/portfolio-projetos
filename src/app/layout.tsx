@@ -29,12 +29,12 @@ const interfaceBootstrap = `(function(){var root=document.documentElement;try{va
 export const metadata: Metadata = {
   title: "Giovane Ferreira",
   description:
-    "Portfólio de Giovane Ferreira, Product Engineer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
+    "Portfólio de Giovane Ferreira, Full Stack Developer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   authors: [{ name: "Giovane Ferreira da Silva" }],
   creator: "Giovane Ferreira da Silva",
   category: "technology",
   keywords: [
-    "Product Engineer",
+    "Full Stack Developer",
     "React",
     "Next.js",
     "PHP",

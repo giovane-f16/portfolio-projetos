@@ -102,8 +102,8 @@ export const profile: PortfolioProfile = {
   name: "Giovane Ferreira da Silva",
   professionalName: "Giovane Ferreira",
   role: {
-    en: "Product Engineer",
-    pt: "Product Engineer",
+    en: "Full Stack Developer",
+    pt: "Full Stack Developer",
   },
   location: {
     en: "São Paulo, Brazil",

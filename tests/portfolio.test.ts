@@ -74,8 +74,8 @@ describe("resume-backed portfolio content", () => {
     expect(profile.name).toBe("Giovane Ferreira da Silva");
     expect(profile.professionalName).toBe("Giovane Ferreira");
     expect(profile.role).toEqual({
-      en: "Product Engineer",
-      pt: "Product Engineer",
+      en: "Full Stack Developer",
+      pt: "Full Stack Developer",
     });
     expect(profile.location).toEqual({
       en: "São Paulo, Brazil",
