@@ -468,15 +468,6 @@ export function Header() {
           >
             <button
               type="button"
-              className={locale === "en" ? "is-selected" : undefined}
-              aria-pressed={locale === "en"}
-              aria-label={locale === "en" ? "Use English" : "Usar inglês"}
-              onClick={() => handleLocaleChange("en")}
-            >
-              EN
-            </button>
-            <button
-              type="button"
               className={locale === "pt" ? "is-selected" : undefined}
               aria-pressed={locale === "pt"}
               aria-label={
@@ -485,6 +476,15 @@ export function Header() {
               onClick={() => handleLocaleChange("pt")}
             >
               PT
+            </button>
+            <button
+              type="button"
+              className={locale === "en" ? "is-selected" : undefined}
+              aria-pressed={locale === "en"}
+              aria-label={locale === "en" ? "Use English" : "Usar inglês"}
+              onClick={() => handleLocaleChange("en")}
+            >
+              EN
             </button>
           </div>
 
