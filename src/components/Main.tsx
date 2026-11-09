@@ -318,6 +318,11 @@ export function Main() {
                   <p className="job-org" translate="no">
                     {experience.organization}
                   </p>
+                  {experience.summary ? (
+                    <p className="job-summary">
+                      <Copy text={experience.summary} />
+                    </p>
+                  ) : null}
                   <ul>
                     {experience.highlights.map((highlight) => (
                       <li key={highlight.en}>

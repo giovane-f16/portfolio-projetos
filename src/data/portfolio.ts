@@ -33,6 +33,7 @@ export interface Experience {
   role: LocalizedText;
   period: LocalizedText;
   location?: LocalizedText;
+  summary?: LocalizedText;
   highlights: LocalizedText[];
 }
 
@@ -204,11 +205,16 @@ export const profile: PortfolioProfile = {
       role: { en: "Junior Software Developer", pt: "Programador de Sistemas Júnior" },
       period: { en: "Oct 2022 — Present", pt: "Out 2022 — Atual" },
       location: { en: "São Paulo, Brazil", pt: "São Paulo, Brasil" },
+      summary: {
+        en: "I maintain and update the main products, such as:",
+        pt: "Atuo na manutenção e atualizações nos principais produtos como:",
+      },
       highlights: [
-        {
-          en: "I maintain and update the main products, such as: TV Gazeta, Gazeta Esportiva, Faculdade Cásper Líbero, São Silvestre, and Troféu Mesa Redonda.",
-          pt: "Atuo na manutenção e atualizações nos principais produtos como: TV Gazeta, Gazeta Esportiva, Faculdade Cásper Líbero, São Silvestre e Troféu Mesa Redonda.",
-        },
+        { en: "TV Gazeta", pt: "TV Gazeta" },
+        { en: "Gazeta Esportiva", pt: "Gazeta Esportiva" },
+        { en: "Faculdade Cásper Líbero", pt: "Faculdade Cásper Líbero" },
+        { en: "São Silvestre", pt: "São Silvestre" },
+        { en: "Troféu Mesa Redonda", pt: "Troféu Mesa Redonda" },
       ],
     },
     {

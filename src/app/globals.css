@@ -411,6 +411,9 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
 .job-org {
   margin-bottom: 14px; color: var(--color-accent); font-weight: var(--weight-semibold);
 }
+.job-summary {
+  margin: 0 0 10px; color: var(--color-text-muted);
+}
 .job ul {
   display: grid; gap: 8px; color: var(--color-text-muted);
 }
