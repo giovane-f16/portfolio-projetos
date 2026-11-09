@@ -372,7 +372,7 @@ export function Main() {
             </div>
             <div className="credential-group">
               <h3>
-                <Copy text={{ en: "Certificates", pt: "Certificados" }} />
+                <Copy text={{ en: "Recent certificates", pt: "Certificados recentes" }} />
               </h3>
               <ul>
                 {profile.certifications.map((certification) => (
