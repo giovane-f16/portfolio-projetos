@@ -289,8 +289,8 @@ export const profile: PortfolioProfile = {
     },
   ],
   certifications: [
-    { en: "PHP and TDD: Testing with PHPUnit", pt: "PHP e TDD: testes com PHPUnit" },
-    { en: "Object-Oriented PHP", pt: "PHP orientado a objetos" },
+    { en: "Claude Academy: Claude Code in Action", pt: "Claude Academy: Claude Code in Action" },
+    { en: "Claude Academy: Claude Code 101", pt: "Claude Academy: Claude Code 101" },
   ],
 };
 

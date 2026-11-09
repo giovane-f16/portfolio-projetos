@@ -121,8 +121,8 @@ describe("resume-backed portfolio content", () => {
       "Full professional proficiency",
     ]);
     expect(profile.certifications.map((item) => item.en)).toEqual([
-      "PHP and TDD: Testing with PHPUnit",
-      "Object-Oriented PHP",
+      "Claude Academy: Claude Code in Action",
+      "Claude Academy: Claude Code 101",
     ]);
   });
 
