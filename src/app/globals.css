@@ -73,7 +73,7 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
   width: 40px; height: 40px; display: grid; flex: 0 0 auto; place-items: center; overflow: hidden;
 }
 .brand-logo {
-  width: 100%; height: 100%; object-fit: contain; filter: brightness(0);
+  width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);
 }
 .brand-copy {
   display: grid; line-height: 1.2;
