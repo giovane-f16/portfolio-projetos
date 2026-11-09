@@ -324,10 +324,13 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
   flex: 1; display: flex; flex-direction: column; padding: 20px 22px 22px;
 }
 .project-period {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 10px; color: var(--color-text-subtle); font-variant-numeric: tabular-nums;
+  display: flex; align-items: flex-start; gap: 10px; min-height: calc(2em * var(--leading-body)); margin-bottom: 10px; color: var(--color-text-subtle); font-variant-numeric: tabular-nums;
+}
+.project-period > span:first-child {
+  flex: 1; min-width: 0;
 }
 .project-status {
-  display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-weight: var(--weight-bold);
+  display: inline-flex; flex-shrink: 0; align-items: center; gap: 6px; margin-left: auto; font-weight: var(--weight-bold);
 }
 .project-status > span:first-child {
   width: 7px; height: 7px; border-radius: 50%; background: currentColor;
