@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 html {
-  color-scheme: light; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + var(--safe-top));
+  color-scheme: dark; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + var(--safe-top));
 }
 body {
   min-width: 320px; margin: 0; overflow-x: hidden; background: var(--color-canvas); color: var(--color-text);
@@ -60,7 +60,7 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
 /* Header */
 .site-header {
   position: fixed; z-index: 50; top: 0; right: 0; left: 0; padding-top: var(--safe-top);
-  border-bottom: 1px solid var(--color-border); background: var(--color-canvas);
+  background: var(--color-canvas);
 }
 .header-inner {
   min-height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
@@ -172,7 +172,7 @@ html[data-locale="en"] [data-locale-copy="pt"], html[data-locale="pt"] [data-loc
 /* Hero */
 .hero-block {
   position: relative; overflow: hidden; padding-top: calc(var(--header-height) + var(--safe-top) + clamp(48px, 8vw, 104px)); padding-bottom: clamp(28px, 4vw, 44px);
-  border-radius: 0 0 var(--radius-block) var(--radius-block); background: var(--color-block-brand); color: var(--color-text-inverse);
+  border-radius: 0 0 var(--radius-block) var(--radius-block); background: linear-gradient(180deg, var(--color-canvas) 0%, var(--color-block-brand) 25%); color: var(--color-text-inverse);
 }
 .hero-block :focus-visible, .skills-block :focus-visible, .contact-block :focus-visible {
   outline-color: var(--color-focus-inverse);
