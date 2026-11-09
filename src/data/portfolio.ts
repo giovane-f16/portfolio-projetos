@@ -169,8 +169,8 @@ export const profile: PortfolioProfile = {
       index: "03",
       title: { en: "Publishing", pt: "Publicação" },
       description: {
-        en: "I handle infrastructure, security, and performance, so your project goes live stable and fast.",
-        pt: "Cuido da infraestrutura, da segurança e da performance, para seu projeto ir ao ar estável e rápido.",
+        en: "I deploy websites and apps with a focus on infrastructure, security, and performance.",
+        pt: "Publico sites e aplicativos com foco em infraestrutura, segurança e performance.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
