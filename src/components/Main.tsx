@@ -182,7 +182,7 @@ function ProjectCarousel() {
         <input className="carousel-toggle" type="checkbox" />
         <Copy text={{ en: "Pause animation", pt: "Pausar animação" }} />
       </label>
-      <div className="carousel-viewport">
+      <div className="carousel-viewport" id="projetos-cards">
         <CarouselTrack>
           <ul className="carousel-group">
             {projects.map((project) => (
@@ -229,7 +229,7 @@ export function Main() {
               <Copy text={profile.summary} />
             </p>
             <div className="hero-actions hero-enter" style={{ "--enter-delay": "600ms" } as CSSProperties}>
-              <button className="button button-light" data-scroll-to="projetos">
+              <button className="button button-light" data-scroll-to="projetos" data-scroll-fit="projetos-cards">
                 <Copy text={{ en: "See my projects", pt: "Ver meus projetos" }} />
                 <span aria-hidden="true">↓</span>
               </button>

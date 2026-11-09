@@ -102,16 +102,38 @@ function Copy({ text }: { text: LocalizedText }) {
   );
 }
 
+function scrollBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+}
+
 function scrollSectionIntoView(sectionId: string) {
   const section = document.getElementById(sectionId);
 
   if (!section) return false;
 
-  section.scrollIntoView({
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "auto"
-      : "smooth",
-    block: "start",
+  section.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+
+  return true;
+}
+
+function scrollSectionToFit(sectionId: string, fitId: string) {
+  const section = document.getElementById(sectionId);
+  const fit = document.getElementById(fitId);
+
+  if (!section || !fit) return scrollSectionIntoView(sectionId);
+
+  const headerBottom =
+    document.querySelector(".site-header")?.getBoundingClientRect().bottom ?? 0;
+  const sectionStart = section.getBoundingClientRect().top + window.scrollY - headerBottom;
+  const fitBounds = fit.getBoundingClientRect();
+  const fitBottomAtViewportEnd = fitBounds.bottom + window.scrollY - window.innerHeight;
+  const fitTopBelowHeader = fitBounds.top + window.scrollY - headerBottom;
+
+  window.scrollTo({
+    top: Math.min(Math.max(sectionStart, fitBottomAtViewportEnd), fitTopBelowHeader),
+    behavior: scrollBehavior(),
   });
 
   return true;
@@ -300,8 +322,15 @@ export function Header() {
 
       const control = event.target.closest<HTMLElement>("[data-scroll-to]");
       const sectionId = control?.dataset.scrollTo;
+      const fitId = control?.dataset.scrollFit;
 
-      if (sectionId && scrollSectionIntoView(sectionId)) {
+      if (!sectionId) return;
+
+      const scrolled = fitId
+        ? scrollSectionToFit(sectionId, fitId)
+        : scrollSectionIntoView(sectionId);
+
+      if (scrolled) {
         event.preventDefault();
       }
     };
