@@ -167,10 +167,10 @@ export const profile: PortfolioProfile = {
     },
     {
       index: "03",
-      title: { en: "Publishing/Hosting", pt: "Publicação/Hospedagem" },
+      title: { en: "Publishing", pt: "Publicação" },
       description: {
-        en: "Every delivery comes with a guarantee of security, availability, performance, and SEO.",
-        pt: "Cada entrega é feita com a garantia de segurança, disponibilidade, performance e SEO.",
+        en: "I handle infrastructure, security, and performance, so your project goes live stable and fast.",
+        pt: "Cuido da infraestrutura, da segurança e da performance, para seu projeto ir ao ar estável e rápido.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
