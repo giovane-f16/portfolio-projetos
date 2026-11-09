@@ -109,8 +109,8 @@ export const profile: PortfolioProfile = {
     pt: "São Paulo, Brasil",
   },
   summary: {
-    en: "I’ve been coding since 2020. Today I build PHP systems, WordPress plugins, APIs, and mobile apps at Fundação Cásper Líbero.",
-    pt: "Programo desde 2020. Hoje faço sistemas em PHP, plugins WordPress, APIs e apps na Fundação Cásper Líbero.",
+    en: "I turn ideas into complete systems, from planning to launch, built around the people who use them.",
+    pt: "Transformo ideias em sistemas completos, do planejamento ao lançamento, com foco em quem vai usar.",
   },
   availability: {
     en: "Based in São Paulo · Working across web and mobile",
