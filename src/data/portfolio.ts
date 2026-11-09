@@ -169,8 +169,8 @@ export const profile: PortfolioProfile = {
       index: "03",
       title: { en: "Publishing", pt: "Publicação" },
       description: {
-        en: "I put websites and apps live, taking care of servers, security, and speed.",
-        pt: "Coloco sites e aplicativos no ar, cuidando de servidores, segurança e velocidade.",
+        en: "I host applications on different cloud services, such as AWS and Vercel.",
+        pt: "Hospedo as aplicações em diferentes serviços de cloud, como AWS e Vercel.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
