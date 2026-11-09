@@ -392,13 +392,13 @@ export function Main() {
         <div className="contact-block" data-reveal>
           <div>
             <h2 id="contact-title">
-              <Copy text={{ en: "Got a project or a job opening?", pt: "Tem um projeto ou uma vaga?" }} />
+              <Copy text={{ en: "Have an idea you’d like to share?", pt: "Tem alguma ideia e quer compartilhar?" }} />
             </h2>
             <p>
               <Copy
                 text={{
-                  en: "Send me a message on LinkedIn. My code is on GitHub.",
-                  pt: "Me chama no LinkedIn. Meu código está no GitHub.",
+                  en: "Message me on LinkedIn. For more information, visit my GitHub.",
+                  pt: "Me chame no LinkedIn. Caso queira mais informações, visite meu GitHub.",
                 }}
               />
             </p>
