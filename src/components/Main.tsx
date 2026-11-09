@@ -51,13 +51,15 @@ function ExternalLink({
   href,
   children,
   className,
+  tabIndex,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
+  tabIndex?: number;
 }) {
   return (
-    <a className={className} href={href} target="_blank" rel="noreferrer">
+    <a className={className} href={href} target="_blank" rel="noreferrer" tabIndex={tabIndex}>
       {children}
       <span className="link-arrow" aria-hidden="true">
         ↗
@@ -131,7 +133,7 @@ function ProjectThumbnail({ project }: { project: Project }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, isLoopCopy = false }: { project: Project; isLoopCopy?: boolean }) {
   const status = projectStatusLabels[project.status];
 
   return (
@@ -159,7 +161,7 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </ul>
           {project.status === "online" && project.url ? (
-            <ExternalLink className="text-link" href={project.url}>
+            <ExternalLink className="text-link" href={project.url} tabIndex={isLoopCopy ? -1 : undefined}>
               <Copy text={{ en: "View Project", pt: "Ver projeto" }} />
             </ExternalLink>
           ) : (
@@ -189,10 +191,10 @@ function ProjectCarousel() {
               </li>
             ))}
           </ul>
-          <ul className="carousel-group" aria-hidden="true" inert>
+          <ul className="carousel-group" aria-hidden="true">
             {projects.map((project) => (
               <li key={project.id}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} isLoopCopy />
               </li>
             ))}
           </ul>

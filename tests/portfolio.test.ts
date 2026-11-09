@@ -582,7 +582,9 @@ describe("bilingual corporate interface", () => {
     const main = readProjectFile("src/components/Main.tsx");
     const styles = readProjectFile("src/app/globals.css");
 
-    expect(main).toContain('className="carousel-group" aria-hidden="true" inert');
+    expect(main).toContain('className="carousel-group" aria-hidden="true">');
+    expect(main).not.toMatch(/carousel-group[^>]*inert/);
+    expect(main).toContain("tabIndex={isLoopCopy ? -1 : undefined}");
     expect(main).toContain('className="carousel-toggle"');
     expect(styles).toMatch(/@keyframes carousel-scroll\s*{\s*to\s*{\s*transform:\s*translateX\(-50%\)/);
     expect(styles).toContain(".project-carousel:has(.carousel-toggle:checked) .carousel-track");
