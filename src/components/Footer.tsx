@@ -21,7 +21,7 @@ export function Footer() {
           <strong translate="no">Giovane Ferreira</strong>
         </div>
         <p>
-          <Copy text={{ en: "Made by me in São Paulo.", pt: "Feito por mim, em São Paulo." }} />
+          <Copy text={{ en: "São Paulo.", pt: "São Paulo." }} />
         </p>
         <p>© Giovane Ferreira</p>
       </div>
