@@ -167,10 +167,10 @@ export const profile: PortfolioProfile = {
     },
     {
       index: "03",
-      title: { en: "Delivery", pt: "Entrega" },
+      title: { en: "Publishing and Hosting", pt: "Publicação e Hospedagem" },
       description: {
-        en: "I test, monitor, and ship with Docker and CI/CD.",
-        pt: "Testo, monitoro e publico com Docker e CI/CD.",
+        en: "Every delivery comes with a guarantee of security, availability, performance, and SEO.",
+        pt: "Cada entrega é feita com a garantia de segurança, disponibilidade, performance e SEO.",
       },
       technologies: ["Docker", "CI/CD", "AWS", "E2E", "Git"],
     },
