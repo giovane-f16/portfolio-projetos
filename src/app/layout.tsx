@@ -27,7 +27,7 @@ const fontVariables = `${archivo.variable} ${instrumentSans.variable} ${jetbrain
 const interfaceBootstrap = `(function(){var root=document.documentElement;try{var saved=window.localStorage.getItem('portfolio-locale');if(saved==='en'){root.dataset.locale='en';root.lang='en'}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){root.classList.add('reveal-enabled');window.setTimeout(function(){if(!root.hasAttribute('data-reveal-ready'))root.classList.remove('reveal-enabled')},3000)}})()`;
 
 export const metadata: Metadata = {
-  title: "Giovane Ferreira",
+  title: "Giovane Ferreira - Full Stack Developer",
   description:
     "Portfólio de Giovane Ferreira, Full Stack Developer em São Paulo com atuação em produtos web, backend, cloud e mobile.",
   authors: [{ name: "Giovane Ferreira da Silva" }],
