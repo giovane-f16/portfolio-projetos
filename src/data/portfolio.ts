@@ -206,16 +206,8 @@ export const profile: PortfolioProfile = {
       location: { en: "São Paulo, Brazil", pt: "São Paulo, Brasil" },
       highlights: [
         {
-          en: "I build PHP systems, WordPress plugins and themes, and REST APIs.",
-          pt: "Faço sistemas em PHP, plugins e temas WordPress e APIs REST.",
-        },
-        {
-          en: "I write unit and E2E tests and monitor apps in production.",
-          pt: "Escrevo testes unitários e E2E e monitoro as aplicações.",
-        },
-        {
-          en: "I ship Ionic and Angular apps to Google Play and the App Store.",
-          pt: "Publico apps Ionic e Angular na Google Play e na App Store.",
+          en: "I maintain and update the main products, such as: TV Gazeta, Gazeta Esportiva, Faculdade Cásper Líbero, São Silvestre, and Troféu Mesa Redonda.",
+          pt: "Atuo na manutenção e atualizações nos principais produtos como: TV Gazeta, Gazeta Esportiva, Faculdade Cásper Líbero, São Silvestre e Troféu Mesa Redonda.",
         },
       ],
     },
